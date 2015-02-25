@@ -1,0 +1,10 @@
+{{#each data}}
+  <div class='headers'>
+    {{#each this.headers}}
+      {{@key}}: {{this}}<br>
+    {{/each}}
+  </div>
+  <div class='payload'>
+    {{json this.payload}}
+  </div>
+{{/each}}

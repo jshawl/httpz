@@ -3,6 +3,12 @@ var Hapi = require('hapi');
 var mongoose = require('mongoose');
 var server = new Hapi.Server();
 var dbUrl = 'mongodb://localhost:27017/hook-clinic';
+var Handlebars = require('handlebars');
+
+
+Handlebars.registerHelper('json', function(obj) {
+       return JSON.stringify(obj);
+});
 
 var appointmentSchema = new mongoose.Schema({
   headers: { type: Object },
@@ -59,10 +65,12 @@ server.route({
           reply( err );
           return;
         }
-        reply( apts );
+        reply.view('appointments', { data: apts } );
        })
     }
+
 });
+
 
 server.route({
   method: 'POST',
