@@ -5,14 +5,13 @@ var server = new Hapi.Server();
 var dbUrl = 'mongodb://localhost:27017/hook-clinic';
 var Handlebars = require('handlebars');
 
-
 Handlebars.registerHelper('json', function(obj) {
        return JSON.stringify(obj);
 });
 
 var appointmentSchema = new mongoose.Schema({
-  headers: { type: Object },
-  payload: { type: Object }
+  createdAt: { type: Date },
+  requests: { type: Array }
 });
 
 var Appointment = mongoose.model('Appointment', appointmentSchema, 'Appointments');
@@ -50,43 +49,47 @@ server.route({
 
 server.route({
     method: 'GET',
-    path:'/appointments/create', 
+    path:'/{id}', 
     handler: function (request, reply) {
-       reply( 'pizza' );
+      Appointment.find({ _id: request.params.id }, function(err, apt) {
+	if (err) {
+	  reply(err);
+	  return;
+	}
+	reply(apt);
+      });
     }
 });
+
 
 server.route({
     method: 'GET',
-    path:'/appointments', 
-    handler: function (request, reply) {
-       Appointment.find( function( err, apts ){
-        if (err){
-          reply( err );
-          return;
-        }
-        reply.view('appointments', { data: apts } );
-       })
+    path:'/appointments/create', 
+    handler: function (req, res) {
+      var apt = new Appointment()
+      apt.save(function( err, apt ){
+	if( err ) {
+	  res( err );
+	  return;
+	}
+	res.redirect('/'+ apt._id );
+      })
     }
-
 });
-
 
 server.route({
   method: 'POST',
-  path: '/appointments',
+  path: '/{id}',
   handler: function( req, res ){
-    var apt = new Appointment({
-      headers: req.headers,
-      payload: req.payload
-    })
-    
-    apt.save(function( err, apt ){
+    Appointment.findOne({_id: req.params.id}, function( err, apt ){
       if( err ) {
 	res( err );
         return;
       }
-      res( apt );
+      console.log( req.payload );
+      apt.requests.push( { headers: req.headers, payload: req.payload } );
+      apt.save();
+      res( apt )
     })
   }
 })
