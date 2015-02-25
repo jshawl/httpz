@@ -42,6 +42,7 @@ header{
 .request{
   border:1px solid #eee;
   margin-top:2em;
+  border-radius:3px;
   padding:1em;
 }
 
