@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jshawl/hook-clinic",
   "dependencies": {
+    "diy-handlebars-helpers": "^1.0.10",
     "handlebars": "^3.0.0",
     "hapi": "^8.2.0",
     "mongoose": "^3.8.23"

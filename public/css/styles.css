@@ -1,0 +1,19 @@
+body{
+  font-family:'Monaco';
+}
+
+.headers,
+.payload{
+ float:left; 
+ width:50%;
+}
+
+.request{
+
+}
+
+.request:after{
+  content:' ';
+  display:table;
+  clear:both;
+}

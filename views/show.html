@@ -1,1 +1,14 @@
-show all the reqs
+{{#each data.requests}}
+  <div class='request'>
+    <div class='headers'>
+      <h3>Headers</h3>
+      {{#each this.headers }}
+	<strong>{{@key}}</strong>: {{ this }}<br>
+      {{/each}}
+    </div>
+    <div class='payload'>
+      <h3>Payload</h3>
+      {{json this.payload }}
+    </div>
+  </div>
+{{/each}}
