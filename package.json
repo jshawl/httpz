@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jshawl/hook-clinic/issues"
   },
-  "homepage": "https://github.com/jshawl/hook-clinic"
+  "homepage": "https://github.com/jshawl/hook-clinic",
+  "dependencies": {
+    "hapi": "^8.2.0"
+  }
 }
