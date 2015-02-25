@@ -1,6 +1,24 @@
 var Path = require('path');
 var Hapi = require('hapi');
+var mongoose = require('mongoose');
 var server = new Hapi.Server();
+var dbUrl = 'mongodb://localhost:27017/hook-clinic';
+
+var appointmentSchema = new mongoose.Schema({
+  headers: { type: Object },
+  payload: { type: Object }
+});
+
+var Appointment = mongoose.model('Appointment', appointmentSchema, 'Appointments');
+
+var dbOpts = {
+  db: {
+    native_parser: true
+  },
+  server: {
+    poolSize: 5
+  }
+}
 
 server.connection({ 
     host: 'localhost', 
@@ -24,6 +42,50 @@ server.route({
     }
 });
 
+server.route({
+    method: 'GET',
+    path:'/appointments/create', 
+    handler: function (request, reply) {
+       reply( 'pizza' );
+    }
+});
+
+server.route({
+    method: 'GET',
+    path:'/appointments', 
+    handler: function (request, reply) {
+       Appointment.find( function( err, apts ){
+        if (err){
+          reply( err );
+          return;
+        }
+        reply( apts );
+       })
+    }
+});
+
+server.route({
+  method: 'POST',
+  path: '/appointments',
+  handler: function( req, res ){
+    var apt = new Appointment({
+      headers: req.headers,
+      payload: req.payload
+    })
+    
+    apt.save(function( err, apt ){
+      if( err ) {
+	res( err );
+        return;
+      }
+      res( apt );
+    })
+  }
+})
+
 server.start(function(){
+  mongoose.connect( dbUrl, dbOpts, function( err ){
+    if( err ) server.log( 'error', err )
+  })
   console.log('Server running at:', server.info.uri );
 });
