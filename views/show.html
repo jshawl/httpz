@@ -1,5 +1,10 @@
+<input value='http://hook.clinic/{{data._id}}' class='copy'>
 {{#each data.requests}}
   <div class='request'>
+    <div class='meta'>
+      <strong>POST</strong> /{{../data._id}}
+      <small>{{../data.createdAt}}</small>
+    </div>
     <div class='headers'>
       <h3>Headers</h3>
       {{#each this.headers }}

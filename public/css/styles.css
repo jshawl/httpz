@@ -1,15 +1,62 @@
+*{
+  box-sizing:border-box;
+}
+
 body{
   font-family:'Monaco';
+  max-width:65em;
+  margin:auto;
+  padding:2em;
+}
+
+header a{
+   font-weight:bold; 
+   font-family:'Helvetica Neue', sans-serif;
+   font-size:2em;
+   text-decoration:none;
+   color:inherit;
+   letter-spacing:-2px;
+}
+
+header{
+  padding:2em 0;
 }
 
 .headers,
 .payload{
- float:left; 
- width:50%;
+  float:left; 
+  font-size:.8em;
+  width:50%;
+  word-wrap: break-word;
+  overflow:scroll;
+  max-height:600px;
+}
+
+.headers{
+  padding-right:1em;
+}
+.payload{
+  padding-left:1em;
 }
 
 .request{
+  border:1px solid #eee;
+  margin-top:2em;
+  padding:1em;
+}
 
+.copy{
+  padding:.5em 1em;
+  width:50%;
+  display:inline-block;
+}
+
+.meta{
+  background:#eee;
+  margin-left:-1em;
+  margin-right:-1em;
+  margin-top:-1em;
+  padding:1em;
 }
 
 .request:after{
