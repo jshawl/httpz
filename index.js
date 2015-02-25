@@ -2,6 +2,7 @@ var Path = require('path');
 var Hapi = require('hapi');
 var mongoose = require('mongoose');
 var server = new Hapi.Server();
+var SocketIO = require("socket.io")
 var dbUrl = 'mongodb://localhost:27017/hook-clinic';
 var Handlebars = require('handlebars');
 var helpers = require('diy-handlebars-helpers');
@@ -59,7 +60,6 @@ server.route({
 	  reply(err);
 	  return;
 	}
-	console.log( apt )
 	apt.requests = apt.requests.reverse()
 	reply.view('show', {data: apt});
       });
@@ -105,13 +105,14 @@ server.route({
 	res( err );
         return;
       }
-      console.log( req.payload );
-      apt.requests.push( { 
+      var request = {
 	headers: req.headers, 
 	payload: req.payload,
 	createdAt: new Date()
-      });
+      }
+      apt.requests.push( request );
       apt.save();
+      io.sockets.emit('request', request );
       res( apt )
     })
   }
@@ -123,3 +124,5 @@ server.start(function(){
   })
   console.log('Server running at:', server.info.uri );
 });
+
+var io = SocketIO.listen(server.listener);
