@@ -8,9 +8,6 @@ module.exports = function( io ){
 	    method: 'GET',
 	    path:'/', 
 	    handler: function (request, reply) {
-	       io.on('joinbin', function( binid ){
-	       
-	       });
 	       reply.view('index');
 	    }
 	},
