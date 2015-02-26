@@ -1,4 +1,4 @@
-var socket = io();
+var socket = io('http://127.0.0.1:3030');
 socket.on('request', function (data) {
   $('.requests').prepend( data );
   render();
