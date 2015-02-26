@@ -8,6 +8,9 @@ module.exports = function( io ){
 	    method: 'GET',
 	    path:'/', 
 	    handler: function (request, reply) {
+	       io.on('joinbin', function( binid ){
+	       
+	       });
 	       reply.view('index');
 	    }
 	},
@@ -77,7 +80,7 @@ module.exports = function( io ){
 		}
 		var template = Handlebars.compile(data);
 		var r = template( request );
-		io.sockets.emit('request', r );
+		io.to( req.params.id ).emit('request', r );
 	      });
 	      res( request )
 	    })
@@ -108,7 +111,7 @@ module.exports = function( io ){
 		}
 		var template = Handlebars.compile(data);
 		var r = template( request );
-		io.sockets.emit('request', r );
+		io.to( req.params.id ).emit('request', r );
 	      });
 	      res( request )
 	    })
@@ -138,7 +141,7 @@ module.exports = function( io ){
 		}
 		var template = Handlebars.compile(data);
 		var r = template( request );
-		io.sockets.emit('request', r );
+		io.to( req.params.id ).emit('request', r );
 	      });
 	      res( request )
 	    })
@@ -168,7 +171,7 @@ module.exports = function( io ){
 		}
 		var template = Handlebars.compile(data);
 		var r = template( request );
-		io.sockets.emit('request', r );
+		io.to( req.params.id ).emit('request', r );
 	      });
 	      res( request )
 	    })

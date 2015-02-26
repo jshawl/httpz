@@ -1,6 +1,11 @@
 var socket = io();
+socket.on('connect', function( s ){
+  console.log('connected')
+  //s.emit('joinbin', window.location.pathname );
+});
+
 socket.on('request', function (data) {
-  //$('.requests').prepend( data );
+  $('.requests').prepend( data );
   render();
 });
 

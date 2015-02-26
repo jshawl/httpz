@@ -33,4 +33,9 @@ server.views({
 server.start( db );
 
 var io = SocketIO.listen(server.listener);
+io.sockets.on('connection', function( socket ){
+  ref = socket.handshake.headers.referer.split('/')
+  socket.join( ref[ref.length - 1] )
+})
+
 server.route(require('./config/routes')(io));
