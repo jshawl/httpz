@@ -64,6 +64,7 @@ module.exports = function( io ){
 	      }
 	      var request = {
 			headers: req.headers, 
+	                method: "POST",
 			payload: req.payload,
 			createdAt: new Date().toISOString(),
 	        id: apt._id,
