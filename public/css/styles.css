@@ -22,6 +22,10 @@ header a{
    letter-spacing:-2px;
 }
 
+.recent{
+  display:none;
+}
+
 .recent-link{
   display:block;
   padding:1em 2em;
