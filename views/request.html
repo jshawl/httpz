@@ -1,12 +1,9 @@
   <div class='request'>
     <div class='meta'>
       <strong>POST</strong> /{{this.id}}
-      <small class='js-timeago'>
+      <small>
 	<abbr class="js-timeago" title="{{this.createdAt}}">{{this.createdAt}}</abbr>
-
-	
       </small>
-
     </div>
     <div class='headers'>
       <h3>Headers</h3>
@@ -16,6 +13,8 @@
     </div>
     <div class='payload'>
       <h3>Payload</h3>
-      {{json this.payload }}
+      <div class='js-jsonview'>
+	{{json this.payload }}
+      </div>
     </div>
   </div>
