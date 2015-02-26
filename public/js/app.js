@@ -1,4 +1,4 @@
-var socket = io('http://localhost:3030');
+var socket = io();
 socket.on('request', function (data) {
   $('.requests').prepend( data );
   render();
