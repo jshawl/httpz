@@ -114,7 +114,6 @@ server.route({
 	createdAt: new Date().toISOString(),
         id: apt._id,
       }
-      console.log( request )
       apt.requests.push( request );
       apt.save();
       fs.readFile('views/request.html', 'utf8', function (err,data) {
