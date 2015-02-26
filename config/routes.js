@@ -21,6 +21,7 @@ module.exports = function( io ){
 		  return;
 		}
 		apt.requests = apt.requests.reverse()
+		apt.host = request.info.host;
 		reply.view('show', {data: apt});
 	      });
 	    }
@@ -62,9 +63,9 @@ module.exports = function( io ){
 	        return;
 	      }
 	      var request = {
-		headers: req.headers, 
-		payload: req.payload,
-		createdAt: new Date().toISOString(),
+			headers: req.headers, 
+			payload: req.payload,
+			createdAt: new Date().toISOString(),
 	        id: apt._id,
 	      }
 	      apt.requests.push( request );
@@ -77,7 +78,7 @@ module.exports = function( io ){
 		var r = template( request );
 		io.sockets.emit('request', r );
 	      });
-	      res( apt )
+	      res( request )
 	    })
 	  }
 	}

@@ -1,10 +1,12 @@
-<input value='http://restful.link/{{data._id}}' class='copy'>
+<input value='http://{{data.host}}/{{data._id}}' class='copy'>
 <div class='requests'>
 {{#each data.requests}}
   {{> request}}
 {{/each}}
 <h2>cURL</h2>
-<pre>
-curl -X POST -d "this=is&so=cool" http://restful.link/{{data._id}}
+<div class='cf'>
+<pre class='left'>
+curl -X POST -d "this=is&so=cool" http://{{data.host}}/{{data._id}}
 </pre>
+</div>
 </div>
