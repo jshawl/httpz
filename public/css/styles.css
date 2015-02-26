@@ -8,6 +8,11 @@ body{
   padding:2em;
 }
 
+h1, h2, h3{
+   font-family:'Helvetica Neue', sans-serif;
+   letter-spacing:-.05em;
+}
+
 header a{
    font-weight:bold; 
    font-family:'Helvetica Neue', sans-serif;
@@ -15,6 +20,15 @@ header a{
    text-decoration:none;
    color:inherit;
    letter-spacing:-2px;
+}
+
+.recent-link{
+  display:block;
+  padding:1em 2em;
+  margin-bottom:1em;
+  color:inherit;
+  text-decoration:none;
+  border:1px solid #eee;
 }
 
 header{
@@ -76,6 +90,6 @@ pre{
   padding:1em 2em;
   text-decoration:none;
   display:inline-block;
-  margin-top:1em;
+  margin:1em 0;
   text-shadow:1px 1px  0 #647b1b;
 }
