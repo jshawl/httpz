@@ -69,3 +69,13 @@ pre{
   background: #eee;
   padding:1em;
 }
+
+.new{
+  background:limegreen;
+  color:#fff;
+  padding:1em 2em;
+  text-decoration:none;
+  display:inline-block;
+  margin-top:1em;
+  text-shadow:1px 1px  0 #647b1b;
+}
