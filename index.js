@@ -30,7 +30,6 @@ server.connection({
     port: 3030
 });
 
-server.route(require('./config/routes'));
 
 server.views({
   engines: {
@@ -51,3 +50,4 @@ server.start(function(){
 });
 
 var io = SocketIO.listen(server.listener);
+server.route(require('./config/routes')(io));

@@ -1,6 +1,9 @@
 var Appointment = require('../models/appointment.js');
+var fs = require('fs');
+var Handlebars = require('handlebars');
 
-module.exports = [
+module.exports = function( io ){
+   return [
 	{
 	    method: 'GET',
 	    path:'/', 
@@ -78,4 +81,5 @@ module.exports = [
 	    })
 	  }
 	}
-];
+]
+}
