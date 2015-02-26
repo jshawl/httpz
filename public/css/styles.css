@@ -63,3 +63,9 @@ header{
   display:table;
   clear:both;
 }
+
+pre{
+  border:1px solid #ddd;
+  background: #eee;
+  padding:1em;
+}
