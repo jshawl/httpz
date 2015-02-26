@@ -34,12 +34,8 @@
 <script>
   var socket = io('http://localhost:3030');
   socket.on('request', function (data) {
-    var $req = $("<div class='request'></div>")
-    var $meta = $("<div class='meta'>"+ data.createdAt +"</div>")
-    var $headers = $("<div class='headers'>"+ JSON.stringify(data.headers) +"</div>");
-    var $payload = $("<div class='payload'>"+ JSON.stringify(data.payload) +"</div>");
-    $req.append( $meta ).append( $headers ).append( $payload );
-    $('.requests').prepend( $req );
+    console.log(data);
+    $('.requests').prepend( data );
   });
 </script>
  </body>

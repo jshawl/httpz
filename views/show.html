@@ -1,21 +1,6 @@
 <input value='http://hook.clinic/{{data._id}}' class='copy'>
 <div class='requests'>
 {{#each data.requests}}
-  <div class='request'>
-    <div class='meta'>
-      <strong>POST</strong> /{{../data._id}}
-      <small>{{../data.createdAt}}</small>
-    </div>
-    <div class='headers'>
-      <h3>Headers</h3>
-      {{#each this.headers }}
-	<strong>{{@key}}</strong>: {{ this }}<br>
-      {{/each}}
-    </div>
-    <div class='payload'>
-      <h3>Payload</h3>
-      {{json this.payload }}
-    </div>
-  </div>
+  {{> request}}
 {{/each}}
 </div>

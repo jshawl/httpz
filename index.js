@@ -6,10 +6,13 @@ var SocketIO = require("socket.io")
 var dbUrl = 'mongodb://localhost:27017/hook-clinic';
 var Handlebars = require('handlebars');
 var helpers = require('diy-handlebars-helpers');
+var fs = require('fs');
 
 Handlebars.registerHelper('json', function(obj) {
        return JSON.stringify(obj);
 });
+var template = fs.readFileSync('views/request.html', 'utf8');
+Handlebars.registerPartial("request", template);
 
 var appointmentSchema = new mongoose.Schema({
   createdAt: { type: Date },
@@ -108,11 +111,20 @@ server.route({
       var request = {
 	headers: req.headers, 
 	payload: req.payload,
-	createdAt: new Date()
+	createdAt: new Date(),
+        id: apt._id,
       }
+      console.log( request )
       apt.requests.push( request );
       apt.save();
-      io.sockets.emit('request', request );
+      fs.readFile('views/request.html', 'utf8', function (err,data) {
+	if (err) {
+	  return console.log(err);
+	}
+	var template = Handlebars.compile(data);
+	var r = template( request );
+	io.sockets.emit('request', r );
+      });
       res( apt )
     })
   }
