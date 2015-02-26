@@ -1,4 +1,4 @@
-# (Restful.link)[http://restful.link/]
+# [Restful.link](http://restful.link/)
 
 is a service for inspecting RESTful http requests.
 
