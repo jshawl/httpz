@@ -22,8 +22,10 @@ if( slug != "" ){
     });
   }
 } else {
- $(".recent").show();
  var apts = Appointment.all().reverse(); 
+ if( apts.length ){
+   $(".recent").show();
+ }
  for( var i = 0; i < apts.length; i++ ){
    console.log(apts[i]);
    var apt = apts[i];
