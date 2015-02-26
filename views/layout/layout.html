@@ -9,34 +9,9 @@
       <a href='/'>Hook Clinic</a>
     </header>
     {{{content}}}
-<script src="/socket.io/socket.io.js"></script>
-<script src='http://jshawl.com/jq'></script>
-
-<script id="request" type="text/x-handlebars-template">
-  <div class='request'>
-    <div class='meta'>
-      <strong>POST</strong> /{{../data._id}}
-      <small>{{../data.createdAt}}</small>
-    </div>
-    <div class='headers'>
-      <h3>Headers</h3>
-      {{#each this.headers }}
-	<strong>{{@key}}</strong>: {{ this }}<br>
-      {{/each}}
-    </div>
-    <div class='payload'>
-      <h3>Payload</h3>
-      {{json this.payload }}
-    </div>
-  </div>
-</script>
-
-<script>
-  var socket = io('http://localhost:3030');
-  socket.on('request', function (data) {
-    console.log(data);
-    $('.requests').prepend( data );
-  });
-</script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src='http://jshawl.com/jq'></script>
+    <script src='/public/js/jquery.timeago.js'></script>
+    <script src='/public/js/app.js'></script>
  </body>
 </html>

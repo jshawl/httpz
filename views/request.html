@@ -1,7 +1,12 @@
   <div class='request'>
     <div class='meta'>
       <strong>POST</strong> /{{this.id}}
-      <small>{{this.createdAt}}</small>
+      <small class='js-timeago'>
+	<abbr class="js-timeago" title="{{this.createdAt}}">{{this.createdAt}}</abbr>
+
+	
+      </small>
+
     </div>
     <div class='headers'>
       <h3>Headers</h3>

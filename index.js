@@ -111,7 +111,7 @@ server.route({
       var request = {
 	headers: req.headers, 
 	payload: req.payload,
-	createdAt: new Date(),
+	createdAt: new Date().toISOString(),
         id: apt._id,
       }
       console.log( request )
