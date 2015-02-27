@@ -5,11 +5,15 @@
 {{/each}}
 <h2>JavaScript <small>(using jQuery)</small></h2>
 <div class='cf'>
-<pre class='left js-try-it-code'>
+<pre class='left js-try-it-code' contenteditable="true">
 $.ajax({
   type: "POST",
   url: "http://{{data.host}}/{{data._id}}",
-  data: { one: 'one', two: 'two' },
+  data: { 
+    language: 'javascript', 
+    method: 'POST',
+    time: new Date()
+  },
   success: function( res ){
      console.log( res );
   }

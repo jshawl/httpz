@@ -3,7 +3,7 @@
 }
 
 body{
-  font-family:'Monaco';
+  font-family:'Inconsolata', monospace;
   margin:auto;
   padding:2em;
 }
@@ -62,10 +62,16 @@ header{
   padding:1em;
 }
 
+.body{
+  font-size:1.5em;
+}
+
 .copy{
   padding:.5em 1em;
-  width:50%;
-  display:inline-block;
+  font:inherit;
+  font-size:1.5em;
+  display:block;
+  width:100%;
 }
 
 .meta{
@@ -84,9 +90,11 @@ header{
 
 pre{
   border:1px solid #ddd;
-  background: #eee;
+  background: #fafafa;
+  border-radius:3px;
   padding:1em;
   overflow:scroll;
+  font:inherit;
 }
 
 .new, .try-it{
@@ -94,7 +102,9 @@ pre{
   color:#fff;
   padding:1em 2em;
   text-decoration:none;
+  font-weight:bold;
   display:inline-block;
+  font-size:1.25em;
   margin:1em 0;
   text-shadow:1px 1px  0 #647b1b;
 }
