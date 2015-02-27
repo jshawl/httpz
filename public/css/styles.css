@@ -95,6 +95,10 @@ header{
   padding:1em;
 }
 
+.meta strong{
+  text-transform:uppercase;
+}
+
 .request:after{
   content:' ';
   display:table;
