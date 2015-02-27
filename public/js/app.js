@@ -45,6 +45,6 @@ render();
 
 $('.js-try-it').on('click', function( event ){
   event.preventDefault();
-  toEval = $('.js-try-it-code').html();
+  var toEval = $('.js-try-it-code').html();
   eval( toEval );
 });
