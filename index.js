@@ -1,7 +1,7 @@
 var Path = require('path');
 var Hapi = require('hapi');
 var server = new Hapi.Server();
-var SocketIO = require("socket.io")
+var SocketIO = require('socket.io')
 var Handlebars = require('handlebars');
 var helpers = require('diy-handlebars-helpers');
 var fs = require('fs');
@@ -11,14 +11,14 @@ var db = require('./config/db.js');
 var template = fs.readFileSync('views/request.html', 'utf8');
 
 Handlebars.registerHelper('json', function(obj) {
-       return JSON.stringify(obj);
+  return JSON.stringify(obj);
 });
 
-Handlebars.registerPartial("request", template);
+Handlebars.registerPartial('request', template);
 
 server.connection({ 
-    host: 'localhost', 
-    port: 3030
+  host: 'localhost', 
+  port: 3030
 });
 
 var data = JSON.parse( fs.readFileSync('public/dist/rev-manifest.json','utf-8') );
@@ -31,8 +31,8 @@ server.views({
   layout: true,
   layoutPath: Path.join(__dirname, 'views/layout'),
   context: {
-    css: data["css/styles.css"],
-    js: data["js/app.js"]
+    css: data['css/styles.css'],
+    js: data['js/app.js']
   }
 })
 
