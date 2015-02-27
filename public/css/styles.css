@@ -89,7 +89,7 @@ pre{
   overflow:scroll;
 }
 
-.new{
+.new, .try-it{
   background:limegreen;
   color:#fff;
   padding:1em 2em;
@@ -97,4 +97,8 @@ pre{
   display:inline-block;
   margin:1em 0;
   text-shadow:1px 1px  0 #647b1b;
+}
+
+.try-it{
+  
 }

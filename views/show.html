@@ -3,6 +3,20 @@
 {{#each data.requests}}
   {{> request}}
 {{/each}}
+<h2>JavaScript <small>(using jQuery)</small></h2>
+<div class='cf'>
+<pre class='left js-try-it-code'>
+$.ajax({
+  type: "POST",
+  url: "http://{{data.host}}/{{data._id}}",
+  data: { one: 'one', two: 'two' },
+  success: function( res ){
+     console.log( res );
+  }
+});
+</pre>
+</div>
+<a href='#' class='try-it js-try-it'><span>⤿</span> Try it!</a>
 <h2>cURL</h2>
 <div class='cf'>
 <pre class='left'>

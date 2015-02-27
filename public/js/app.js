@@ -5,6 +5,7 @@ socket.on('connect', function( s ){
 });
 
 socket.on('request', function (data) {
+  console.log('here')
   $('.requests').prepend( data );
   render();
 });
@@ -42,3 +43,9 @@ if( slug != "" ){
 }
 
 render();
+
+$('.js-try-it').on('click', function( event ){
+  event.preventDefault();
+  toEval = $('.js-try-it-code').html();
+  eval( toEval );
+});
