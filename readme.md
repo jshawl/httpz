@@ -7,6 +7,7 @@ is a service for inspecting RESTful http requests.
     $ git clone https://github.com/jshawl/restful-link.git
     $ cd restful-link
     $ npm install
+    $ gulp rev
     $ node index.js
 
 Make sure MongoDB is running on your server.
