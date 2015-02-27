@@ -1,5 +1,5 @@
 {
-  "name": "hook-clinic",
+  "name": "restful-link",
   "version": "0.0.0",
   "description": "",
   "main": "app.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jshawl/hook-clinic.git"
+    "url": "https://github.com/jshawl/restful-link.git"
   },
   "author": "Jesse Shawl",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jshawl/hook-clinic/issues"
+    "url": "https://github.com/jshawl/restful-link/issues"
   },
-  "homepage": "https://github.com/jshawl/hook-clinic",
+  "homepage": "https://github.com/jshawl/restful-link",
   "dependencies": {
     "diy-handlebars-helpers": "^1.0.10",
     "handlebars": "^3.0.0",
