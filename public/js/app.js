@@ -1,11 +1,5 @@
 var socket = io();
-socket.on('connect', function( s ){
-  console.log('connected')
-  //s.emit('joinbin', window.location.pathname );
-});
-
 socket.on('request', function (data) {
-  console.log('here')
   $('.requests').prepend( data );
   render();
 });
@@ -13,7 +7,8 @@ socket.on('request', function (data) {
 var render = function render(){
   $('.js-timeago').timeago();
   $(".js-jsonview").each(function( i, js ){
-    $(js).JSONView(  $(js).html() );
+    $(this).removeClass('js-jsonview');
+    $(js).JSONView(  js.innerHTML );
   });
 }
 
@@ -33,7 +28,6 @@ if( slug != "" ){
    $(".recent").show();
  }
  for( var i = 0; i < apts.length; i++ ){
-   console.log(apts[i]);
    var apt = apts[i];
    var $link = $("<a class='recent-link' href='/"+ apt.slug +"'>/"+ apt.slug +" </a>")
    var $time = $("<abbr class='js-timeago' title='"+ apt.createdAt +"'></abbr>")
