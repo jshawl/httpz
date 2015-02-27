@@ -21,13 +21,19 @@ server.connection({
     port: 3030
 });
 
+var data = JSON.parse( fs.readFileSync('public/dist/rev-manifest.json','utf-8') );
+
 server.views({
   engines: {
     html: require('handlebars')
   },
   path: Path.join(__dirname, 'views'),
   layout: true,
-  layoutPath: Path.join(__dirname, 'views/layout')
+  layoutPath: Path.join(__dirname, 'views/layout'),
+  context: {
+    css: data["css/styles.css"],
+    js: data["js/app.js"]
+  }
 })
 
 server.start( db );
