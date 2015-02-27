@@ -25,7 +25,7 @@ var data = JSON.parse( fs.readFileSync('public/dist/rev-manifest.json','utf-8') 
 console.log( data)
 server.views({
   engines: {
-    html: require('handlebars')
+    html: Handlebars
   },
   path: Path.join(__dirname, 'views'),
   layout: true,
