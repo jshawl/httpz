@@ -29,10 +29,15 @@ if( slug != "" ){
  }
  for( var i = 0; i < apts.length; i++ ){
    var apt = apts[i];
-   var $link = $("<a class='recent-link' href='/"+ apt.slug +"'>/"+ apt.slug +" </a>")
-   var $time = $("<abbr class='js-timeago' title='"+ apt.createdAt +"'></abbr>")
-   $link.append( $time );
-   $('.js-recent').append( $link );
+   var now = new Date().setHours(0,0,0,0)
+   if( Date.parse(apt.createdAt) < now ){
+     Appointment.find( apt.id ).destroy()
+   } else {
+     var $link = $("<a class='recent-link' href='/"+ apt.slug +"'>/"+ apt.slug +" </a>")
+     var $time = $("<abbr class='js-timeago' title='"+ apt.createdAt +"'></abbr>")
+     $link.append( $time );
+     $('.js-recent').append( $link );
+   }
  }
 }
 

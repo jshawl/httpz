@@ -2,7 +2,7 @@ var Appointment = require('../models/appointment.js');
 var today = require('moment')().startOf('day');
 var db = require('../config/db.js')(function( mg ){
 	console.log('connected');
-	Appointment.find(function(err, apts){
+	Appointment.remove(function(err, apts){
 		if(err) console.log(err);
 		console.log("total", apts.length );
 	});
