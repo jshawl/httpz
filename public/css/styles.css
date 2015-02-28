@@ -129,16 +129,40 @@ pre{
 
 [data-status="error"]{
   background:#B83635;
-  color:#FBF8F8;
   margin:1em 0;
   padding:1em;
 }
 
 [data-status="success"]{
   background:#2C962C;
-  color:#FBF8F8;
   margin:1em 0;
   padding:1em;
 }
 
+.connection-result{
+  position:relative;
+  color:#FBF8F8;
+}
 
+.remove{
+  float:right;
+  position:absolute;
+  right:.5em;
+  top:50%;
+  color:#FBF8F8;
+  font-size:2em;
+  transform:translateY(-50%);
+  text-decoration:none;
+}
+
+#proxy ~ .show-if-proxy{
+  display:none;
+}
+
+#proxy:checked ~ .show-if-proxy{
+  display:block;
+}
+
+.staging{
+  display:none;
+}

@@ -1,8 +1,13 @@
 <input value='http://{{data.host}}/{{data._id}}' class='copy'>
-<input type='checkbox' id='proxy'><label for='proxy'> Proxy to localhost? </label><br><br>
+<div class='staging'>
+<input type='checkbox' id='proxy'><label for='proxy'> Proxy to localhost? </label>
+<div class='show-if-proxy'>
+<br><br>
 http://localhost:<input type='text' placeholder='Enter Port and/or path' id='port'>
 <button class='js-test-connection'>Test Connection</button>
-<div class='js-connection-result connection-result'></div>
+<div class='js-connection-result connection-result'> </div>
+</div>
+</div>
 <div class='requests'>
 {{#each data.requests}}
   {{> request}}

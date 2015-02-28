@@ -8,7 +8,6 @@ socket.on('request', function (data) {
 });
 
 socket.on('proxy', function (data) {
-  console.log( data );
   if( shouldProxy.checked ){
     proxy( data, port.value );
   }
@@ -70,21 +69,27 @@ $('.js-try-it').on('click', function( event ){
 
 $('.js-test-connection').on('click', function( e ){
   var $res = $('.js-connection-result');
+  var $remove = $('<a href="#" class="remove js-clean-parent">&times;</a>')
   $.ajax({
     type: "POST",
     async: true,
     url: 'http://localhost:' + port.value,
     success: function(message,text,response){
       $res.attr('data-status','success')
-      $res.html( "Ok" );
+      $res.html( "Ok" ).append( $remove );
     }, 
     error: function( xhr, status, err ){
       $res.attr('data-status','error')
       if( xhr.readyState == 0 ){
-	$res.html( "Connection refused.");
+	$res.html( "Connection refused.").append( $remove );
       } else{
-        $res.html( err );
+        $res.html( err ).append( $remove );
       }
     }
   });
 });
+
+$('body').on('click', '.js-clean-parent',function( event ){
+  event.preventDefault();
+  $(this).parent().html('').attr('data-status','');
+})
