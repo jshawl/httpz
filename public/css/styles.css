@@ -75,8 +75,10 @@ header{
   padding:1em;
 }
 
-.body{
+.body, ul{
   font-size:1.5em;
+  line-height:2;
+  margin-top:0;
 }
 
 .copy{
