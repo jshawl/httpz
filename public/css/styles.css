@@ -77,6 +77,8 @@ header{
 
 .body{
   font-size:1.5em;
+  line-height:2;
+  margin-top:0;
 }
 
 .copy{
@@ -85,6 +87,7 @@ header{
   font-size:1.5em;
   display:block;
   width:100%;
+  margin-bottom:1.5em;
 }
 
 .meta{
@@ -97,6 +100,11 @@ header{
 
 .meta strong{
   text-transform:uppercase;
+}
+
+.meta .show-if-proxy{
+  float:right;
+  text-decoration:none;
 }
 
 .request:after{
@@ -126,6 +134,46 @@ pre{
   text-shadow:1px 1px  0 #647b1b;
 }
 
-.try-it{
-  
+[data-status="error"]{
+  background:#B83635;
+  margin:1em 0;
+  padding:1em;
+}
+
+[data-status="success"]{
+  background:#2C962C;
+  margin:1em 0;
+  padding:1em;
+}
+
+.connection-result{
+  position:relative;
+  color:#FBF8F8;
+}
+
+.remove{
+  float:right;
+  position:absolute;
+  right:.5em;
+  top:50%;
+  color:#FBF8F8;
+  font-size:2em;
+  transform:translateY(-50%);
+  text-decoration:none;
+}
+
+#proxy ~ .show-if-proxy,
+#proxy ~ .requests .show-if-proxy{
+  display:none;
+}
+
+#proxy:checked ~ .show-if-proxy,
+#proxy:checked ~ .requests .show-if-proxy{
+  display:block;
+}
+
+footer{
+  border-top:1px solid #eee;
+  margin-top:2em;
+  padding:2em 0;
 }
