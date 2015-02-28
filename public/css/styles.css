@@ -100,6 +100,11 @@ header{
   text-transform:uppercase;
 }
 
+.meta .show-if-proxy{
+  float:right;
+  text-decoration:none;
+}
+
 .request:after{
   content:' ';
   display:table;
@@ -155,10 +160,12 @@ pre{
   text-decoration:none;
 }
 
-#proxy ~ .show-if-proxy{
+#proxy ~ .show-if-proxy,
+#proxy ~ .requests .show-if-proxy{
   display:none;
 }
 
-#proxy:checked ~ .show-if-proxy{
+#proxy:checked ~ .show-if-proxy,
+#proxy:checked ~ .requests .show-if-proxy{
   display:block;
 }

@@ -13,6 +13,12 @@ socket.on('proxy', function (data) {
   }
 });
 
+$('body').on('click', '.js-resend', function( event ){
+  event.preventDefault();
+  var data = $(this).data('json')
+  proxy( data, port.value );
+})
+
 var proxy = function proxy( payload, port ){
   $.ajax({
     type: "POST",
