@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "gulp": "^3.8.11",
-    "gulp-rev": "^3.0.1"
+    "gulp-rev": "^3.0.1",
+    "gulp-watch": "^4.1.1"
   }
 }
