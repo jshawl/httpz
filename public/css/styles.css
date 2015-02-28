@@ -162,7 +162,3 @@ pre{
 #proxy:checked ~ .show-if-proxy{
   display:block;
 }
-
-.staging{
-  display:none;
-}
