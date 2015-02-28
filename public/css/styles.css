@@ -85,6 +85,7 @@ header{
   font-size:1.5em;
   display:block;
   width:100%;
+  margin-bottom:1.5em;
 }
 
 .meta{
@@ -126,6 +127,42 @@ pre{
   text-shadow:1px 1px  0 #647b1b;
 }
 
-.try-it{
-  
+[data-status="error"]{
+  background:#B83635;
+  margin:1em 0;
+  padding:1em;
+}
+
+[data-status="success"]{
+  background:#2C962C;
+  margin:1em 0;
+  padding:1em;
+}
+
+.connection-result{
+  position:relative;
+  color:#FBF8F8;
+}
+
+.remove{
+  float:right;
+  position:absolute;
+  right:.5em;
+  top:50%;
+  color:#FBF8F8;
+  font-size:2em;
+  transform:translateY(-50%);
+  text-decoration:none;
+}
+
+#proxy ~ .show-if-proxy{
+  display:none;
+}
+
+#proxy:checked ~ .show-if-proxy{
+  display:block;
+}
+
+.staging{
+  display:none;
 }

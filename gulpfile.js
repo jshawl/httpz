@@ -9,3 +9,8 @@ gulp.task('rev', function() {
     .pipe(rev.manifest())
     .pipe(gulp.dest('public/dist'));
 });
+
+gulp.task('default', function(){
+  gulp.watch('./public/css/*.css',['rev'])
+  gulp.watch('./public/js/*.js',['rev'])
+})

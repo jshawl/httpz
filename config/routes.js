@@ -19,6 +19,7 @@ module.exports = function( io ){
       }
       apt.requests.push( request );
       apt.save();
+      io.to( req.params.id ).emit('proxy', request );
       fs.readFile('views/request.html', 'utf8', function (err,data) {
 	if (err) {
 	  return console.log(err);
