@@ -49,6 +49,9 @@ module.exports = function( io ){
 	  method: 'GET',
 	  path:'/{id}', 
 	  handler: function (request, reply) {
+	    if( request.query.challenge ){
+	      reply( request.query.challenge )  
+	    } else {
 	    Appointment.findOne({ _id: request.params.id }, function(err, apt) {
 	      if (err) {
 		reply(err);
@@ -58,6 +61,7 @@ module.exports = function( io ){
 	      apt.host = request.info.host;
 	      reply.view('show', {data: apt});
 	    });
+	  }
 	  }
 	},
 	{
