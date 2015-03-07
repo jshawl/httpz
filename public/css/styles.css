@@ -171,9 +171,3 @@ pre{
 #proxy:checked ~ .requests .show-if-proxy{
   display:block;
 }
-
-footer{
-  border-top:1px solid #eee;
-  margin-top:2em;
-  padding:2em 0;
-}

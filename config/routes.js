@@ -1,5 +1,4 @@
 var Appointment = require('../models/appointment.js');
-var Request = require('../models/request.js');
 var fs = require('fs');
 var Handlebars = require('handlebars');
 
@@ -20,9 +19,6 @@ module.exports = function( io ){
       }
       apt.requests.push( request );
       apt.save();
-      Request.create({
-        createdAt: new Date().toISOString()
-      })
       io.to( req.params.id ).emit('proxy', request.payload );
       fs.readFile('views/request.html', 'utf8', function (err,data) {
 	if (err) {
@@ -40,9 +36,7 @@ module.exports = function( io ){
 	  method: 'GET',
 	  path:'/', 
 	  handler: function (request, reply) {
-	     Request.count({},function( err, res ){
-	       reply.view('index', { len: res } );
-	     })
+	     reply.view('index');
 	  }
 	},
 	{
