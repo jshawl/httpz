@@ -31,7 +31,7 @@ server.views({
   layout: true,
   layoutPath: Path.join(__dirname, 'views/layout'),
   context: {
-    css: data['css/styles.css'],
+    css: data['assets/styles.css'],
     js: data['js/app.js']
   }
 })
