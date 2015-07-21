@@ -45,6 +45,8 @@ module.exports = function( io ){
 	  handler: function (request, reply) {
 	    if( request.query.challenge ){
 	      reply( request.query.challenge )  
+	    } else if( JSON.stringify(request.query) != "{}" ) {
+              reply( request.query )
 	    } else {
 	    Appointment.findOne({ _id: request.params.id }, function(err, apt) {
 	      if (err) {
