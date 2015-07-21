@@ -13,7 +13,7 @@ module.exports = function( io ){
       var request = {
 	headers: req.headers, 
 	method: req.method,
-	payload: req.payload,
+	payload: req.payload || req.query,
 	createdAt: new Date().toISOString(),
 	id: apt._id,
       }
@@ -46,7 +46,7 @@ module.exports = function( io ){
 	    if( request.query.challenge ){
 	      reply( request.query.challenge )  
 	    } else if( JSON.stringify(request.query) != "{}" ) {
-              reply( request.query )
+	      handler( request, reply )
 	    } else {
 	    Appointment.findOne({ _id: request.params.id }, function(err, apt) {
 	      if (err) {
