@@ -15,16 +15,27 @@ socket.on('proxy', function (data) {
 
 $('body').on('click', '.js-resend', function( event ){
   event.preventDefault();
-  var data = $(this).data('json')
-  proxy( data, port.value );
+  var data = $(this).data('json');
+  var contentType = $(this).data('content-type');
+  proxy( data, port.value, contentType );
 })
 
-var proxy = function proxy( payload, port ){
+var proxy = function proxy( payload, port, contentType ){
+  if (contentType && contentType.indexOf('application/json') === 0) {
+    // if request was sent as JSON, forward it as same content type
+    payload = JSON.stringify(payload);
+    headers = {
+      'content-type': contentType
+    };
+  } else {
+    headers = {};
+  }
   $.ajax({
     type: "POST",
     async: true,
     data: payload,
-    url: 'http://localhost:' + port
+    url: 'http://localhost:' + port,
+    headers: headers
   });
 }
 
@@ -47,7 +58,7 @@ if( slug != "" ){
     });
   }
 } else {
- var apts = Appointment.all().reverse(); 
+ var apts = Appointment.all().reverse();
  if( apts.length ){
    $(".recent").show();
  }
@@ -83,7 +94,7 @@ $('.js-test-connection').on('click', function( e ){
     success: function(message,text,response){
       $res.attr('data-status','success')
       $res.html( "Ok" ).append( $remove );
-    }, 
+    },
     error: function( xhr, status, err ){
       $res.attr('data-status','error')
       if( xhr.readyState == 0 ){
