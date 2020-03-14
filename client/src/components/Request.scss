@@ -1,0 +1,7 @@
+.Request {
+  padding: 1em;
+  .headers, .payload, pre{
+    font-family: Monaco;
+    white-space: normal;
+  }
+}

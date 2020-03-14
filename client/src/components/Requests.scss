@@ -1,0 +1,37 @@
+$black: #282c34;
+
+.Requests {
+  background: $black;
+  border-right: 1px solid lighten($black, 10%);
+  flex: 1;
+  max-width: 300px;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align:left;
+
+    li{
+      border-bottom: 1px solid white;
+      cursor: pointer;
+      padding: 1em;
+
+      &.active {
+        background: lighten($black, 10%);
+      }
+
+      a{
+        color: white;
+        text-decoration:none;
+      }
+
+      pre {
+        margin: 0;
+      }
+      time {
+        font-size: .7em;
+      }
+    }
+  }
+}
