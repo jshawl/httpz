@@ -15,7 +15,7 @@ http://localhost:<input type='text' placeholder='Enter Port and/or path' id='por
 <pre class='left js-try-it-code' contenteditable="true">
 $.ajax({
   type: "POST",
-  url: "http://{{data.host}}/{{data._id}}",
+  url: "{{scheme}}://{{data.host}}/{{data._id}}",
   data: { 
     language: 'javascript', 
     method: 'POST',

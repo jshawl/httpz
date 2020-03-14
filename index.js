@@ -44,7 +44,7 @@ app.get('/:id',(req, res)=> {
       if (err) return res.json(err)
       apt.requests = apt.requests.reverse()
       apt.host = req.headers.host;
-      res.render('show', { data: apt });
+      res.render('show', { data: apt, scheme: process.env.NODE_ENV === "production" ? "https" : "http" });
     })
   }
 })
