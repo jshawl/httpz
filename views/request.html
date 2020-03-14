@@ -1,23 +1,28 @@
   <div class='request'>
     <div class='meta'>
-      <strong>{{ this.method }}</strong> /{{this.id}}
-      <small>
-	<abbr class="js-timeago" title="{{this.createdAt}}">{{this.createdAt}}</abbr>
-      </small>
-      <a href='#' class='show-if-proxy js-resend'
-        data-json="{{json this.payload}}"
-        data-content-type="{{this.headers.content-type}}">Resend to Localhost</a>
+      <div>
+        <strong>{{ this.method }}</strong> /{{this.id}}
+        <small>
+          <abbr class="js-timeago" title="{{this.createdAt}}">
+            {{this.createdAt}}
+          </abbr>
+        </small>
+        <a href='#' class='show-if-proxy js-resend'
+          data-json="{{json this.payload}}"
+          data-content-type="{{this.headers.content-type}}">Resend to Localhost</a>
+      </div>
+      <span class='collapse js-collapse'>-</span>
     </div>
     <div class='headers'>
       <h3>Headers</h3>
       {{#each this.headers }}
-	<strong>{{@key}}</strong>: {{ this }}<br>
+	      <strong>{{@key}}</strong>: {{ this }}<br>
       {{/each}}
     </div>
     <div class='payload'>
       <h3>Payload</h3>
       <div class='js-jsonview'>
-	{{json this.payload }}
+	       {{json this.payload }}
       </div>
     </div>
   </div>

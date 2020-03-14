@@ -110,3 +110,8 @@ $('body').on('click', '.js-clean-parent',function( event ){
   event.preventDefault();
   $(this).parent().html('').attr('data-status','');
 })
+
+$("body").on("click",".js-collapse", function(e){
+  $(this).html($(this).html() === "-" ? "+" : "-")
+  $(this).closest(".request").toggleClass("collapsed")
+})
