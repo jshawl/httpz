@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var dbUrl = 'mongodb://localhost:27017/hook-clinic';
+var dbUrl = process.env.MONGODB_URI || 'mongodb://localhost:27017/hook-clinic';
 var dbOpts = {
   db: {
     native_parser: true

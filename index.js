@@ -59,4 +59,4 @@ app.get("/appointments/create", (req, res) => {
   })
 })
 
-server.listen(3030)
+server.listen(process.env.PORT || 3030)
