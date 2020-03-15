@@ -1,23 +1,24 @@
 import React, {useState, Component} from 'react'
 import {Link} from 'react-router-dom'
 import './Requests.scss'
+import {Menu} from 'semantic-ui-react'
 
-const Requests = ({data, active, children}) => (
+const Requests = ({data, active, children, ts}) => (
   <div className='Requests'>
     <h2>Requests</h2>
-    <ul>
+    <Menu vertical fluid pointing> 
       {data?.requests.map((datum, i) => (
-        <li className={active.createdAt === datum.createdAt && 'actives'}>
+        <Menu.Item active={active.createdAt === datum.createdAt && !ts}>
           <Link to={`/${active.id}/${datum.createdAt}`}>
             <pre>{datum.method} /{datum.id}</pre>
             <time>{datum.createdAt}</time>
           </Link>
-        </li>
+        </Menu.Item>
       ))}
-      <li className={data.requests.length || 'active'}>
+      <Menu.Item active={ts === "new"}>
         <Link to={"/" + data._id + "/new"} >Try it</Link>
-      </li>
-    </ul>
+      </Menu.Item>
+    </Menu>
   </div>
 )
 

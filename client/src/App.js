@@ -13,6 +13,9 @@ import {
   Link,
   useParams
 } from "react-router-dom";
+import 'semantic-ui-css/semantic.min.css'
+import { Menu } from 'semantic-ui-react'
+
 
 const apiURL = 'http://localhost:3030'
 
@@ -27,8 +30,8 @@ const Appointment = () => {
   if(ts == "new"){
     return (
       <React.Fragment>
-        <Requests active={requests.requests[0]} data={requests} />
-        <NewRequest appointmentURI={apiURL}/>
+        <Requests active={requests.requests[0]} data={requests} ts="new" />
+        <NewRequest appointmentURI={apiURL} />
       </React.Fragment>
     )
   }
@@ -44,7 +47,12 @@ const Appointment = () => {
 const App = () => (
   <div >
     <Router>
-      <h1><Link to="/">Restful.link</Link></h1>
+      <Menu basic inverted fluid>
+        <Menu.Item>
+        <h1><Link to="/">Restful.link</Link></h1>
+        </Menu.Item>
+      </Menu>
+      
       <div className="App">
       <Switch>
         <Route path="/:id/:ts">
