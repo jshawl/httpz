@@ -1,4 +1,4 @@
-import React, {useState, Component} from 'react';
+import React from 'react';
 import './App.scss';
 import Requests from './components/Requests'
 import Request from './components/Request'
@@ -8,7 +8,6 @@ import {useFetch} from './hooks'
 import {
   BrowserRouter as Router,
   Switch,
-  Redirect,
   Route,
   Link,
   useParams
@@ -27,7 +26,7 @@ const Appointment = () => {
 
   if(loading) return <div>loading...</div>
 
-  if(ts == "new"){
+  if(ts === "new"){
     return (
       <React.Fragment>
         <Requests active={requests.requests[0]} data={requests} ts="new" />
@@ -35,7 +34,7 @@ const Appointment = () => {
       </React.Fragment>
     )
   }
-  const active = requests?.requests.find(d => d.createdAt == ts)
+  const active = requests?.requests.find(d => d.createdAt === ts)
   return (
     <React.Fragment>
       <Requests active={active} data={requests} />

@@ -14,6 +14,7 @@ const script = (uri) =>
 })`
 
 const evaluate = (code, callback) => {
+  // eslint-disable-next-line
   eval(code).then(res => res.json()).then(callback)
 }
 

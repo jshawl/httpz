@@ -1,4 +1,4 @@
-import React, {useState, Component} from 'react'
+import React from 'react'
 import {Link} from 'react-router-dom'
 import './Requests.scss'
 import {Menu} from 'semantic-ui-react'

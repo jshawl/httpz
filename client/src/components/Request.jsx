@@ -1,4 +1,4 @@
-import React, {useState, Component} from 'react'
+import React from 'react'
 import './Request.scss'
 
 import ReactJson from 'react-json-view'
