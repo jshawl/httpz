@@ -1,0 +1,26 @@
+.NewRequest {
+  script {
+    background: #fff;
+    border-radius: 5px;
+    color: black;
+    font-family: Monaco, monospace;
+    padding:1em;
+    margin:0;
+    white-space: pre;
+  }
+  pre{
+    background:#444;
+    padding: .25em;
+  }
+  pre.bash{
+    position: relative;
+    &:before{
+    content: '$ ';
+    }
+
+  }
+  pre.wrap{
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+}

@@ -3,6 +3,7 @@ import './App.scss';
 import Requests from './components/Requests'
 import Request from './components/Request'
 import Home from './components/Home'
+import NewRequest from './components/NewRequest'
 import {useFetch} from './hooks'
 import {
   BrowserRouter as Router,
@@ -13,23 +14,17 @@ import {
   useParams
 } from "react-router-dom";
 
+const apiURL = 'http://localhost:3030'
+
 const Appointment = () => {
   const {id, ts} = useParams()
   let [requests, loading] = useFetch(
-    `http://localhost:3030/${id}.json`
+    `${apiURL}/${id}.json`
   );
-  let active
 
   if(loading) return <div>loading...</div>
 
-  // missing a ts value
-  if(requests.requests && requests.requests.length && !ts){
-    let req = requests.requests[0]
-    return <Redirect to={"/" + req.id + "/" + req.createdAt} />
-  }
-  if(requests.requests && requests.requests.length){
-    active = requests.requests.find(d => d.createdAt == ts)
-  }
+  const active = requests?.requests.find(d => d.createdAt == ts)
   return (
     <React.Fragment>
       <Requests active={active} data={requests} />
@@ -38,11 +33,26 @@ const Appointment = () => {
   )
 }
 
+const RequestList = ({activeIndex}) => {
+  const {id, ts} = useParams()
+  let [requests, loading] = useFetch(
+    `${apiURL}/${id}.json`
+  );
+  if(loading) return <div>loading rn</div>
+  return (
+    <Requests active={requests.requests[0]} data={requests} />
+  )
+}
+
 const App = () => (
   <div className="App">
     <Router>
       <Switch>
-        <Route path="/:id/:ts?">
+        <Route path="/:id/new">
+          <RequestList />
+          <NewRequest appointmentURI={apiURL} />
+        </Route>
+        <Route path="/:id/:ts">
           <Appointment />
         </Route>
         <Route path="/">

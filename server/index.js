@@ -35,15 +35,16 @@ var handler = (io) => (req, res) => {
 
 app.get('/', (req,res)=> res.render("index"))
 
-app.get('/:id.json', (req, res) => {
-  Appointment.findOne({ _id: req.params.id }, function(err, apt) {
+const getAppointment = (id, callback) => {
+  Appointment.findOne({ _id: id }, function(err, apt) {
     console.log(err, apt)
-    if (err) return res.json(err)
-    apt.requests = apt.requests.reverse()
-    apt.host = req.headers.host;
-    res.json(apt)
+    if (err) return callback(err)
+    callback(apt)
   })
-  
+}
+
+app.get('/:id.json', (req, res) => {
+  getAppointment(req.params.id, (apt => res.json(apt)))
 })
 
 app.get('/:id',(req, res)=> {
