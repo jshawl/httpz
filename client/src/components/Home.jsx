@@ -14,6 +14,6 @@ export default function () {
     <div>
       <button onClick={e => createAppointment(setAppointment)}>Get Started</button>
     </div> :
-    <Redirect to={"/" + appointment._id} />
+    <Redirect to={"/" + appointment._id + "/new"} />
   )
 }

@@ -47,6 +47,8 @@ const RequestList = ({activeIndex}) => {
 const App = () => (
   <div className="App">
     <Router>
+      <h1><Link to="/">Restful.link</Link></h1>
+      
       <Switch>
         <Route path="/:id/new">
           <RequestList />
