@@ -24,6 +24,14 @@ const Appointment = () => {
 
   if(loading) return <div>loading...</div>
 
+  if(ts == "new"){
+    return (
+      <React.Fragment>
+        <Requests active={requests.requests[0]} data={requests} />
+        <NewRequest appointmentURI={apiURL}/>
+      </React.Fragment>
+    )
+  }
   const active = requests?.requests.find(d => d.createdAt == ts)
   return (
     <React.Fragment>
@@ -33,27 +41,12 @@ const Appointment = () => {
   )
 }
 
-const RequestList = ({activeIndex}) => {
-  const {id, ts} = useParams()
-  let [requests, loading] = useFetch(
-    `${apiURL}/${id}.json`
-  );
-  if(loading) return <div>loading rn</div>
-  return (
-    <Requests active={requests.requests[0]} data={requests} />
-  )
-}
-
 const App = () => (
-  <div className="App">
+  <div >
     <Router>
       <h1><Link to="/">Restful.link</Link></h1>
-      
+      <div className="App">
       <Switch>
-        <Route path="/:id/new">
-          <RequestList />
-          <NewRequest appointmentURI={apiURL} />
-        </Route>
         <Route path="/:id/:ts">
           <Appointment />
         </Route>
@@ -61,6 +54,7 @@ const App = () => (
           <Home />
         </Route>
       </Switch>
+      </div>
     </Router>
   </div>
 )
