@@ -13,7 +13,7 @@ import {
   useParams
 } from "react-router-dom";
 import 'semantic-ui-css/semantic.min.css'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Grid } from 'semantic-ui-react'
 
 
 const apiURL = 'http://localhost:3030'
@@ -28,30 +28,29 @@ const Appointment = () => {
 
   if(ts === "new"){
     return (
-      <React.Fragment>
-        <Requests active={requests.requests[0]} data={requests} ts="new" />
-        <NewRequest appointmentURI={apiURL} />
-      </React.Fragment>
+      <Grid columns={2} padded>
+        <Grid.Column width={5}><Requests active={requests.requests[0]} data={requests} ts="new" /></Grid.Column>
+        <Grid.Column width={11}><NewRequest appointmentURI={apiURL} /></Grid.Column>
+      </Grid>
     )
   }
   const active = requests?.requests.find(d => d.createdAt === ts)
   return (
-    <React.Fragment>
-      <Requests active={active} data={requests} />
-      {active && <Request data={active} />}
-    </React.Fragment>
+    <Grid columns={2} padded>
+      <Grid.Column width={5}><Requests active={active} data={requests} /></Grid.Column>
+      <Grid.Column width={11}>{active && <Request data={active} />}</Grid.Column>
+    </Grid>
   )
 }
 
 const App = () => (
-  <div >
+  <div className='ui inverted segment'>
     <Router>
       <Menu basic inverted fluid>
         <Menu.Item>
         <h1><Link to="/">Restful.link</Link></h1>
         </Menu.Item>
       </Menu>
-      
       <div className="App">
       <Switch>
         <Route path="/:id/:ts">

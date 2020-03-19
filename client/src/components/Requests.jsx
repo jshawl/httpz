@@ -4,7 +4,7 @@ import './Requests.scss'
 import {Menu} from 'semantic-ui-react'
 
 const Requests = ({data, active, children, ts}) => (
-  <div className='Requests'>
+  <div className='Requests inverted ui segment'>
     <h2>Requests</h2>
     <Menu vertical fluid pointing> 
       {data?.requests.map((datum, i) => (

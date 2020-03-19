@@ -24,7 +24,7 @@ const NewRequest = ({ appointmentURI }) => {
   return (
     <div class='Request NewRequest'>
       <h3>JavaScript</h3>
-      <script id='script' type="text/demo" contentEditable style={{ display: 'block' }}>
+      <script id='script' type="text/demo" style={{ display: 'block' }}>
         {script(appointmentURI + '/' + id)}
       </script>
       <button onClick={e => evaluate(document.getElementById('script').innerHTML, setResponse)}>Run Snippet</button>

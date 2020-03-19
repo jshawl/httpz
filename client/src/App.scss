@@ -1,13 +1,10 @@
 $black: #282c34;
 
-html,body{
+html,body,#root{
   height: 100%;
-  background: $black;
 }
 
 .App {
-  background-color: $black;
-  display: flex;
   justify-content: center;
   color: white;
 }
@@ -16,4 +13,14 @@ html,body{
   flex: 3;
   text-align: left;
   overflow: hidden;
+}
+
+.ui.menu{
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+.ui.inverted.segment{
+  padding: 0 !important;
+  height: 100%;
 }
