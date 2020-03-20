@@ -1,16 +1,19 @@
 .Request {
   flex: 4 !important;
   padding-left: 1em;
-  h2, h2 > pre{
-    margin:0;
+  h2,
+  h2 > pre {
+    margin: 0;
   }
-  .headers, .payload, pre{
+  .headers,
+  .payload,
+  pre {
     white-space: normal;
   }
-  .react-json-view{
+  .react-json-view {
     background: white !important;
     font-family: Inconsolata, monospace !important;
-    padding:1em;
+    padding: 1em;
     word-break: break-all;
   }
 }

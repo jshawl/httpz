@@ -1,30 +1,38 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import './Requests.scss'
-import Timeago from 'react-timeago'
-import {TransitionGroup, CSSTransition} from 'react-transition-group';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Requests.scss";
+import Timeago from "react-timeago";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
-const Requests = ({data, active, children, ts, appointmentId}) => (
-  <div className='Requests'>
-    <ul> 
-        <TransitionGroup>
-          {data.map((datum, i) => (
-            <CSSTransition timeout={2000} key={datum.createdAt}>
-            <li data-key={datum.createdAt} key={datum.createdAt} className={active.createdAt === datum.createdAt && !ts ? 'active' : ''}>
+const Requests = ({ data, active, children, ts, appointmentId }) => (
+  <div className="Requests">
+    <ul>
+      <TransitionGroup>
+        {data.map((datum, i) => (
+          <CSSTransition timeout={2000} key={datum.createdAt}>
+            <li
+              data-key={datum.createdAt}
+              key={datum.createdAt}
+              className={
+                active.createdAt === datum.createdAt && !ts ? "active" : ""
+              }
+            >
               <Link to={`/${active.id}/${datum.createdAt}`}>
-                <pre>{datum.method} /{datum.id}</pre>
-                <pre className='soft'>{datum.headers['user-agent']}</pre>
+                <pre>
+                  {datum.method} /{datum.id}
+                </pre>
+                <pre className="soft">{datum.headers["user-agent"]}</pre>
                 <Timeago date={datum.createdAt} />
               </Link>
             </li>
-            </CSSTransition>
-          ))}
-      <li className={ts === "new" ? 'active' : ''}>
-        <Link to={"/" + appointmentId + "/new"}>Try it</Link>
-      </li>
-        </TransitionGroup>
+          </CSSTransition>
+        ))}
+        <li className={ts === "new" ? "active" : ""}>
+          <Link to={"/" + appointmentId + "/new"}>Try it</Link>
+        </li>
+      </TransitionGroup>
     </ul>
   </div>
-)
+);
 
-export default Requests
+export default Requests;
