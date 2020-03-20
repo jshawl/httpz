@@ -1,13 +1,15 @@
 .Request {
-  padding: 1em;
+  flex: 4 !important;
+  h2, h2 > pre{
+    margin:0;
+  }
   .headers, .payload, pre{
-    font-family: Monaco;
     white-space: normal;
   }
   .react-json-view{
     background: white !important;
-    font-family: Monaco, monospace !important;
+    font-family: Inconsolata, monospace !important;
     padding:1em;
-    border-radius:3px;
+    word-break: break-all;
   }
 }

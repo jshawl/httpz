@@ -1,24 +1,41 @@
 .NewRequest {
+  flex: 1;
   script {
-    background: #fff;
+    background: #ebebeb;
     border-radius: 5px;
     color: black;
-    font-family: Monaco, monospace;
     padding:1em;
     margin:0;
     white-space: pre;
+    margin-bottom: 1em;
   }
   pre{
-    background:#444;
+    background: #ebebeb;
     padding: .25em;
+  }
+  script, pre{
+    font-size: .8rem;
   }
   pre.bash{
     position: relative;
     &:before{
-    content: '$ ';
+      content: '$ ';
     }
-
   }
+
+  button{
+    background-color: limegreen;
+    border:none;
+    font:inherit;
+    color:#fff;
+    padding:1em 2em;
+    text-decoration:none;
+    font-weight:bold;
+    display: block;
+    cursor: pointer;
+    text-shadow:1px 1px  0 #647b1b;
+  }
+
   pre.wrap{
     white-space: pre-wrap;
     word-break: break-all;

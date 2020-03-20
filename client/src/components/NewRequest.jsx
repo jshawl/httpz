@@ -9,7 +9,12 @@ const script = (uri) =>
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
-    ok: true
+    ok: true,
+    wow: {
+      this: {
+        is: 'cool'
+      }
+    }
   })
 })`
 
@@ -20,15 +25,13 @@ const evaluate = (code, callback) => {
 
 const NewRequest = ({ appointmentURI }) => {
   const {id} = useParams()
-  const [response, setResponse] = useState(null)
   return (
     <div class='Request NewRequest'>
       <h3>JavaScript</h3>
       <script id='script' type="text/demo" style={{ display: 'block' }}>
         {script(appointmentURI + '/' + id)}
       </script>
-      <button onClick={e => evaluate(document.getElementById('script').innerHTML, setResponse)}>Run Snippet</button>
-      {response && <pre>{JSON.stringify(response,0, 2)}</pre>}
+      <button onClick={e => evaluate(document.getElementById('script').innerHTML, _=>_ )}>Run Snippet</button>
       <h3>cURL</h3>
       <pre class='bash wrap'>curl -X POST -d "shop[name]=Supermarket&shop[products][]=fruit&shop[products][]=eggs" {appointmentURI}/{id}</pre>
       <pre class='bash wrap'>curl -X PATCH -d "this=is&so=cool" {appointmentURI}/{id}</pre>

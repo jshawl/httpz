@@ -18,13 +18,14 @@ var Appointment = require('./models/appointment.js');
 
 io.sockets.on('connection', function(socket) {
   ref = socket.handshake.headers.referer.split('/')
+  ref.pop()
   socket.join(ref[ref.length - 1])
 })
 
 var handler = (io) => (req, res) => {
   Appointment.receive(req.params.id, req, request => {
     io.to(req.params.id).emit('proxy', request.payload);
-    io.to(req.params.id).emit('request', hbs.compile(fs.readFileSync('views/request.html', 'utf8'))(request));
+    io.to(req.params.id).emit('request', request);
     res.send(request)
   })
 }

@@ -3,13 +3,28 @@ import './Request.scss'
 
 import ReactJson from 'react-json-view'
 
+const parseJSON = (stringOrObject) => {
+  let o
+  try {
+    o = JSON.parse(stringOrObject)
+  } catch (e) {
+    o = stringOrObject
+  }
+  if (typeof o !== "object") return o
+  for (let k in o) {
+    o[k] = parseJSON(o[k])
+  }
+  return o
+}
 
 const Request = ({ data }) => (
   <div className='Request'>
-    <h3>{data.method} /{data.id} {data.createdAt}</h3>
+    <h2><pre>{data.method} /{data.id}</pre></h2>
+    <time>{data.createdAt}</time>
     <div class='payload'>
-      <h3>Payload</h3>
-      <ReactJson src={data.payload} displayDataTypes={false}
+      <h3>Request Body</h3>
+      <ReactJson src={parseJSON(data.payload)} 
+        displayDataTypes={false}
         displayObjectSize={false}
         enableClipboard={false}
         name={null}
@@ -17,7 +32,7 @@ const Request = ({ data }) => (
       />
     </div>
     <div class='headers'>
-      <h3>Headers</h3>
+      <h3>Request Headers</h3>
       <ReactJson src={data.headers} displayDataTypes={false}
         displayObjectSize={false}
         enableClipboard={false}

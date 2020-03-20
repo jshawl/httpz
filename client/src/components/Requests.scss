@@ -1,10 +1,10 @@
-$black: #282c34;
-
 .Requests {
-  background: $black;
-  border-right: 1px solid lighten($black, 10%);
+  padding-right:2em;
   flex: 1;
-  max-width: 300px;
+  width: 300px;
+  h2{
+    padding-left: 1rem;
+  }
 
   ul {
     list-style: none;
@@ -15,14 +15,40 @@ $black: #282c34;
     li{
       border-bottom: 1px solid white;
       cursor: pointer;
-      padding: 1em;
+      a{
+        padding: .5em 1em;
+        display: block;
+      }
+      pre{
+      text-overflow: ellipsis;
+      overflow:hidden;
+      }
+      &:hover{
+        background: #f6f6f6;
+      }
+      a:not(.try-it){
+        color:inherit;
+      }
 
       &.active {
-        background: lighten($black, 10%);
+        background: #EBEBEB;
+        position: relative;
+        &:before{
+          content:'';
+          display: block;
+          position:absolute;
+          right:-20px;
+          top: 50%;
+          transform:translateY(-50%);
+          height: 0;
+          width: 0;
+          border-color: transparent transparent transparent #EBEBEB;
+          border-width:10px;
+          border-style:solid;
+        }
       }
 
       a{
-        color: white;
         text-decoration:none;
       }
 

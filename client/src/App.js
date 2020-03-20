@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, Component} from 'react';
 import './App.scss';
 import Requests from './components/Requests'
 import Request from './components/Request'
@@ -12,50 +12,66 @@ import {
   Link,
   useParams
 } from "react-router-dom";
-import 'semantic-ui-css/semantic.min.css'
-import { Menu, Grid } from 'semantic-ui-react'
+import io from "socket.io-client";
+
 
 
 const apiURL = 'http://localhost:3030'
 
-const Appointment = () => {
-  const {id, ts} = useParams()
-  let [requests, loading] = useFetch(
-    `${apiURL}/${id}.json`
-  );
+class Appointment extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      requests: []
+    }
+  }
+  componentDidMount(){
+    const {id} = this.props.match.params
+    const socket = io('http://localhost:3030/')
+    socket.on('request', d => {
+      let {requests} = this.state
+      requests.push(d)
+      this.setState({...this.state, requests})
+    })
 
-  if(loading) return <div>loading...</div>
-
-  if(ts === "new"){
+    fetch(`${apiURL}/${id}.json`).then(d => d.json()).then(d => {
+      let {requests} = d
+      this.setState({...this.state, requests})
+    })
+  }
+  render(){
+    const {requests} = this.state
+    const {ts, id} = this.props.match.params
+    console.log('')
+      console.log('ts', requests, this.state)
+    if(!requests) return <div>Loading...</div>
+    const active = requests.find(d => d.createdAt === ts)
+    const data = requests.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt))
     return (
-      <Grid columns={2} padded>
-        <Grid.Column width={5}><Requests active={requests.requests[0]} data={requests} ts="new" /></Grid.Column>
-        <Grid.Column width={11}><NewRequest appointmentURI={apiURL} /></Grid.Column>
-      </Grid>
+       <div className='flex'>
+         {ts === "new" ? (
+            <React.Fragment>
+              <Requests active={data[0]} appointmentId={id} data={data} ts="new" />
+              <NewRequest appointmentURI={apiURL} />
+            </React.Fragment>
+         ) : (
+          <React.Fragment>
+            <div><Requests appointmentId={id} active={active} data={data} /></div>
+            <div>{active && <Request data={active} />}</div>
+          </React.Fragment>
+         )}
+      </div>
     )
   }
-  const active = requests?.requests.find(d => d.createdAt === ts)
-  return (
-    <Grid columns={2} padded>
-      <Grid.Column width={5}><Requests active={active} data={requests} /></Grid.Column>
-      <Grid.Column width={11}>{active && <Request data={active} />}</Grid.Column>
-    </Grid>
-  )
 }
 
 const App = () => (
-  <div className='ui inverted segment'>
+  <div className=''>
     <Router>
-      <Menu basic inverted fluid>
-        <Menu.Item>
-        <h1><Link to="/">Restful.link</Link></h1>
-        </Menu.Item>
-      </Menu>
+      <h1><Link to="/">Restful.link</Link></h1>
       <div className="App">
       <Switch>
-        <Route path="/:id/:ts">
-          <Appointment />
-        </Route>
+        <Route path="/:id/:ts" component={Appointment} />
         <Route path="/">
           <Home />
         </Route>
