@@ -5,7 +5,13 @@
   h2{
     padding-left: 1rem;
   }
-
+  .enter, .enter-done{
+    transition: all 1s ease;
+  }
+  .enter-active{
+    background:yellow;
+    transition: all .2s ease;
+  }
   ul {
     list-style: none;
     padding: 0;

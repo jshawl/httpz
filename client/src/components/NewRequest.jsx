@@ -26,17 +26,17 @@ const evaluate = (code, callback) => {
 const NewRequest = ({ appointmentURI }) => {
   const {id} = useParams()
   return (
-    <div class='Request NewRequest'>
+    <div className='Request NewRequest'>
       <h3>JavaScript</h3>
       <script id='script' type="text/demo" style={{ display: 'block' }}>
         {script(appointmentURI + '/' + id)}
       </script>
       <button onClick={e => evaluate(document.getElementById('script').innerHTML, _=>_ )}>Run Snippet</button>
       <h3>cURL</h3>
-      <pre class='bash wrap'>curl -X POST -d "shop[name]=Supermarket&shop[products][]=fruit&shop[products][]=eggs" {appointmentURI}/{id}</pre>
-      <pre class='bash wrap'>curl -X PATCH -d "this=is&so=cool" {appointmentURI}/{id}</pre>
-      <pre class='bash wrap'>curl -X PUT -d "this=is&so=cool" {appointmentURI}/{id}</pre>
-      <pre class='bash wrap'>curl -X DELETE {appointmentURI}/{id}</pre>
+      <pre className='bash wrap'>curl -X POST -d "shop[name]=Supermarket&shop[products][]=fruit&shop[products][]=eggs" {appointmentURI}/{id}</pre>
+      <pre className='bash wrap'>curl -X PATCH -d "this=is&so=cool" {appointmentURI}/{id}</pre>
+      <pre className='bash wrap'>curl -X PUT -d "this=is&so=cool" {appointmentURI}/{id}</pre>
+      <pre className='bash wrap'>curl -X DELETE {appointmentURI}/{id}</pre>
     </div>
   )
 }
