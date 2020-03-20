@@ -3,8 +3,7 @@ import io from "socket.io-client";
 import Requests from "./Requests";
 import Request from "./Request";
 import NewRequest from "./NewRequest";
-
-const apiURL = "http://localhost:3030";
+import { API_URL } from "../config";
 
 class Appointment extends Component {
   constructor(props) {
@@ -15,14 +14,14 @@ class Appointment extends Component {
   }
   componentDidMount() {
     const { id } = this.props.match.params;
-    const socket = io("http://localhost:3030/");
+    const socket = io(API_URL);
     socket.on("request", d => {
       let { requests } = this.state;
       requests.push(d);
       this.setState({ ...this.state, requests });
     });
 
-    fetch(`${apiURL}/${id}.json`)
+    fetch(`${API_URL}/${id}.json`)
       .then(d => d.json())
       .then(d => {
         let { requests } = d;
@@ -47,7 +46,7 @@ class Appointment extends Component {
               data={data}
               ts="new"
             />
-            <NewRequest appointmentURI={apiURL} />
+            <NewRequest appointmentURI={API_URL} />
           </React.Fragment>
         ) : (
           <React.Fragment>

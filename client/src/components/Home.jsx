@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 
 import { Redirect } from "react-router-dom";
+import { API_URL } from "../config";
 
 const createAppointment = callback => {
-  fetch("http://localhost:3030/appointments/create.json")
+  fetch(`${API_URL}/appointments/create.json`)
     .then(response => response.json())
     .then(d => callback(d));
 };

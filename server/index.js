@@ -12,7 +12,10 @@ var fs = require("fs");
 var Appointment = require("./appointment.js");
 
 io.sockets.on("connection", function(socket) {
-  ref = socket.handshake.headers.referer.split("/");
+  console.log(socket.handshake.headers.referer)
+  const { referer } = socket.handshake.headers
+  if(!referer) return
+  ref = referer.split("/");
   ref.pop();
   socket.join(ref[ref.length - 1]);
 });
