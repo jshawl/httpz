@@ -13,9 +13,7 @@ const App = () => (
     <div className="App">
       <Switch>
         <Route path="/:id/:ts" component={Appointment} />
-        <Route path="/">
-          <Home />
-        </Route>
+        <Route path="/" component={Home} />
       </Switch>
     </div>
   </Router>
