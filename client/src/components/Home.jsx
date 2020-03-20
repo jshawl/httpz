@@ -12,7 +12,7 @@ export default function() {
   const [appointment, setAppointment] = useState(null);
   return !appointment ? (
     <div>
-      <button inverted onClick={e => createAppointment(setAppointment)}>
+      <button onClick={e => createAppointment(setAppointment)}>
         Get Started
       </button>
     </div>

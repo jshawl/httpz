@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.scss";
-import Home from "./components/Home";
-import Appointment from "./components/Appointment";
+import Home from "./Home";
+import Appointment from "./Appointment";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
