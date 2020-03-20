@@ -13,6 +13,7 @@ const Requests = ({data, active, children, ts, appointmentId}) => (
             <li data-key={datum.createdAt} key={datum.createdAt} className={active.createdAt === datum.createdAt && !ts ? 'active' : ''}>
               <Link to={`/${active.id}/${datum.createdAt}`}>
                 <pre>{datum.method} /{datum.id}</pre>
+                <pre className='soft'>{datum.headers['user-agent']}</pre>
                 <Timeago date={datum.createdAt} />
               </Link>
             </li>

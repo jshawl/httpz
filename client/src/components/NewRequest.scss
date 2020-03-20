@@ -1,8 +1,7 @@
 .NewRequest {
   flex: 1;
   script {
-    background: #ebebeb;
-    border-radius: 5px;
+    
     color: black;
     padding:1em;
     margin:0;
@@ -10,17 +9,22 @@
     margin-bottom: 1em;
   }
   pre{
-    background: #ebebeb;
+    
     padding: .25em;
   }
   script, pre{
     font-size: .8rem;
+    border: 1px solid #ebebeb;
+    border-radius: 3px;
   }
   pre.bash{
     position: relative;
     &:before{
       content: '$ ';
     }
+  }
+  h3{
+    margin-top: 0;
   }
 
   button{

@@ -2,11 +2,15 @@
   padding-right:2em;
   flex: 1;
   width: 300px;
+  height: 100%;
   h2{
     padding-left: 1rem;
   }
   .enter, .enter-done{
     transition: all 1s ease;
+  }
+  .soft{
+  opacity: .5;
   }
   .enter-active{
     background:yellow;

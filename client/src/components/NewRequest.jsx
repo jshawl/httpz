@@ -32,6 +32,7 @@ const NewRequest = ({ appointmentURI }) => {
         {script(appointmentURI + '/' + id)}
       </script>
       <button onClick={e => evaluate(document.getElementById('script').innerHTML, _=>_ )}>Run Snippet</button>
+      <br />
       <h3>cURL</h3>
       <pre className='bash wrap'>curl -X POST -d "shop[name]=Supermarket&shop[products][]=fruit&shop[products][]=eggs" {appointmentURI}/{id}</pre>
       <pre className='bash wrap'>curl -X PATCH -d "this=is&so=cool" {appointmentURI}/{id}</pre>

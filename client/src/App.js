@@ -66,7 +66,6 @@ class Appointment extends Component {
 }
 
 const App = () => (
-  <div className=''>
     <Router>
       <h1><Link to="/">Restful.link</Link></h1>
       <div className="App">
@@ -78,7 +77,6 @@ const App = () => (
       </Switch>
       </div>
     </Router>
-  </div>
 )
 
 export default App;
