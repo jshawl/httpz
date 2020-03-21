@@ -43,19 +43,21 @@
       }
 
       &.active {
-        background: #ebebeb;
+        background: #fff;
+        border: 1px solid #222;
         position: relative;
         &:before {
           content: "";
+          border: 1px solid #222;
+          border-color: #222 #222 transparent transparent;
           display: block;
           position: absolute;
-          right: -20px;
+          right: 0px;
           top: 50%;
-          transform: translateY(-50%);
-          height: 0;
-          width: 0;
-          border-color: transparent transparent transparent #ebebeb;
-          border-width: 10px;
+          transform: translate(50%, -50%) rotate(45deg);
+          background: #fff;
+          height: 10px;
+          width: 10px;
           border-style: solid;
         }
       }
