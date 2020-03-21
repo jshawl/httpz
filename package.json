@@ -7,7 +7,12 @@
   "license": "MIT",
   "scripts": {
     "start": "node server/index.js",
+    "format": "prettier --write {*,**/*}.{js,jsx,json,css,scss}",
+    "format:check": "yarn format --check",
     "postinstall": "(cd server && npm install); (cd client && yarn install)",
     "heroku-postbuild": "cd client && yarn run build"
+  },
+  "dependencies": {
+    "prettier": "^1.19.1"
   }
 }
