@@ -21,12 +21,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "git": "git rev-parse HEAD | cut -c1-7",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build -b master",
-    "format": "prettier --write 'src/**/*.{js,jsx,css,scss}'"
+    "deploy": "gh-pages -d build -b master"
   },
   "eslintConfig": {
     "extends": "react-app"
