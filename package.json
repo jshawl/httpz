@@ -1,0 +1,12 @@
+{
+  "name": "restful.link",
+  "version": "1.0.0",
+  "main": "server/index.js",
+  "repository": "https://github.com/jshawl/restful-link.git",
+  "author": "Jesse Shawl <jesse@jesse.sh>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server/index.js",
+    "postinstall": "(cd server && npm install); (cd client && yarn install)"
+  }
+}
