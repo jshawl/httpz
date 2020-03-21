@@ -3,13 +3,14 @@ require("./db.js")();
 var app = express();
 var bodyParser = require("body-parser");
 var cors = require("cors");
+var path = require("path");
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, '../client/build')));
 var server = require("http").Server(app);
 var io = require("socket.io")(server);
 var fs = require("fs");
-var path = require("path");
 var Appointment = require("./appointment.js");
 
 io.sockets.on("connection", function(socket) {
@@ -55,7 +56,7 @@ app.get("/appointments/create.json", (req, res) => {
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/../client/build/' + req.path));
+  res.sendFile(path.join(__dirname + '/../client/build/index.html'));
 });
 
 
