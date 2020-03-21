@@ -10,14 +10,13 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "../client/build")));
 var server = require("http").Server(app);
 var io = require("socket.io")(server);
-var fs = require("fs");
 var Appointment = require("./appointment.js");
 
 io.sockets.on("connection", function(socket) {
   console.log(socket.handshake.headers.referer);
   const { referer } = socket.handshake.headers;
   if (!referer) return;
-  ref = referer.split("/");
+  const ref = referer.split("/");
   ref.pop();
   socket.join(ref[ref.length - 1]);
 });
