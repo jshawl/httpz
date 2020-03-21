@@ -6,7 +6,7 @@ const config = {
     API_URL: "http://localhost:3030"
   },
   production: {
-    API_URL: "https://restful-link.herokuapp.com"
+    API_URL: "https://httpz.app"
   }
 };
 
