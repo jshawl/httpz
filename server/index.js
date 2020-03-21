@@ -1,5 +1,5 @@
 var express = require("express");
-require("./db.js")();
+require("./db.js"  )();
 var app = express();
 var bodyParser = require("body-parser");
 var cors = require("cors");
