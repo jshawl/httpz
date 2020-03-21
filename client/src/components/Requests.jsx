@@ -4,19 +4,17 @@ import "./Requests.scss";
 import Timeago from "react-timeago";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
-const Requests = ({ data, active, children, ts, appointmentId }) => (
+const Requests = ({ data, active, ts, appointmentId }) => (
   <div className="Requests">
     <ul>
       <TransitionGroup>
-        {data.map((datum, i) => (
+        {data.map(datum => (
           <CSSTransition timeout={0} key={datum.createdAt}>
             <li
               data-key={datum.createdAt}
               key={datum.createdAt}
               className={
-                active?.createdAt === datum.createdAt &&
-                ts !== "new" &&
-                "active"
+                active.createdAt === datum.createdAt && ts !== "new" && "active"
               }
             >
               <Link to={`/${appointmentId}/${datum.createdAt}`}>

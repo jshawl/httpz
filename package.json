@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node server/index.js",
+    "lint": "eslint --max-warnings=0 client/src/components/*.jsx client/src/*.js server/*.js",
     "format": "prettier --write {*,**/*}.{js,jsx,json,css,scss}",
     "format:check": "prettier --check {*,**/*}.{js,jsx,json,css,scss}",
     "postinstall": "(cd server && npm install); (cd client && yarn install)",
@@ -14,5 +15,16 @@
   },
   "dependencies": {
     "prettier": "^1.19.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^2.24.0",
+    "eslint": "^6.8.0",
+    "eslint-config-dev": "^2.0.0",
+    "eslint-plugin-flowtype": "^4.6.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0",
+    "react-scripts": "^3.4.1",
+    "typescript": "^3.8.3"
   }
 }
