@@ -19,10 +19,8 @@ jobs:
         env:
           CI: true
   lint:
+    needs: build
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [12.x]
     steps:
       - name: "prettier --check"
         run: yarn format:check
