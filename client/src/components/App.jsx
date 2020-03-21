@@ -7,7 +7,12 @@ const App = () => (
   <Router>
     <div className="App">
       <h1>
-        <Link to="/">http⚡</Link>
+        <Link to="/">
+          http
+          <span role="img" aria-label="z">
+            ⚡
+          </span>
+        </Link>
       </h1>
       <Switch>
         <Route path="/:id/:ts" component={Appointment} />
