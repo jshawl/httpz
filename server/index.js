@@ -7,16 +7,16 @@ var path = require("path");
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, "../client/build")));
 var server = require("http").Server(app);
 var io = require("socket.io")(server);
 var fs = require("fs");
 var Appointment = require("./appointment.js");
 
 io.sockets.on("connection", function(socket) {
-  console.log(socket.handshake.headers.referer)
-  const { referer } = socket.handshake.headers
-  if(!referer) return
+  console.log(socket.handshake.headers.referer);
+  const { referer } = socket.handshake.headers;
+  if (!referer) return;
   ref = referer.split("/");
   ref.pop();
   socket.join(ref[ref.length - 1]);
@@ -40,13 +40,13 @@ app.get("/:id.json", (req, res) => {
   });
 });
 
-app.delete("/:id/:ts.json", (req,res) => {
+app.delete("/:id/:ts.json", (req, res) => {
   Appointment.updateOne(
     { _id: req.params.id },
     { $pull: { requests: { createdAt: req.params.ts } } },
-    (err,apt) => res.json(err || apt)
+    (err, apt) => res.json(err || apt)
   );
-})
+});
 
 app.get("/appointments/create.json", (req, res) => {
   var apt = new Appointment({
@@ -55,9 +55,8 @@ app.get("/appointments/create.json", (req, res) => {
   apt.save((err, apt) => res.json(err || apt));
 });
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/../client/build/index.html'));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/../client/build/index.html"));
 });
-
 
 server.listen(process.env.PORT || 3030);

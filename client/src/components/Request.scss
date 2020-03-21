@@ -16,25 +16,25 @@
     padding: 1em;
     word-break: break-all;
   }
-  .delete{
-    color: #DB2828;
-    padding: .25em .5em;
+  .delete {
+    color: #db2828;
+    padding: 0.25em 0.5em;
     display: inline-block;
     border-radius: 3px;
     font: inherit;
-    border: 1px solid #DB2828;
+    border: 1px solid #db2828;
     cursor: pointer;
     position: absolute;
     right: 1em;
     top: 1em;
     &:hover,
-    &:active{
-      background: #DB2828;
+    &:active {
+      background: #db2828;
       color: #fff;
     }
     &:focus {
       outline: none;
-      box-shadow: 0 0 3px #DB2828;
+      box-shadow: 0 0 3px #db2828;
     }
   }
 }
