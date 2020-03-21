@@ -3,6 +3,7 @@ import "./App.scss";
 import Home from "./Home";
 import Appointment from "./Appointment";
 
+const notneeded = false;
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const App = () => (
