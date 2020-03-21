@@ -9,6 +9,7 @@ app.use(bodyParser.json());
 var server = require("http").Server(app);
 var io = require("socket.io")(server);
 var fs = require("fs");
+var path = require("path");
 var Appointment = require("./appointment.js");
 
 io.sockets.on("connection", function(socket) {
@@ -38,11 +39,24 @@ app.get("/:id.json", (req, res) => {
   });
 });
 
+app.delete("/:id/:ts.json", (req,res) => {
+  Appointment.updateOne(
+    { _id: req.params.id },
+    { $pull: { requests: { createdAt: req.params.ts } } },
+    (err,apt) => res.json(err || apt)
+  );
+})
+
 app.get("/appointments/create.json", (req, res) => {
   var apt = new Appointment({
     createdAt: new Date()
   });
   apt.save((err, apt) => res.json(err || apt));
 });
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/../client/build/' + req.path));
+});
+
 
 server.listen(process.env.PORT || 3030);

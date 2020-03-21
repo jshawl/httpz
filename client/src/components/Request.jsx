@@ -1,5 +1,6 @@
 import React from "react";
 import "./Request.scss";
+import { API_URL } from '../config';
 
 import ReactJson from "react-json-view";
 
@@ -17,6 +18,13 @@ const parseJSON = stringOrObject => {
   return o;
 };
 
+const deleteRequest = ({id, createdAt}) => {
+  fetch(`${API_URL}/${id}/${createdAt}.json`,{
+    method: 'delete'
+  })
+}
+
+
 const Request = ({ data }) => (
   <div className="Request">
     <h2>
@@ -25,6 +33,7 @@ const Request = ({ data }) => (
       </pre>
     </h2>
     <time>{data.createdAt}</time>
+    <button className='delete' onClick={e => deleteRequest(data)}>delete</button>
     <div class="payload">
       <h3>Request Body</h3>
       <ReactJson

@@ -14,10 +14,10 @@ const Requests = ({ data, active, children, ts, appointmentId }) => (
               data-key={datum.createdAt}
               key={datum.createdAt}
               className={
-                active.createdAt === datum.createdAt && !ts ? "active" : ""
+                active?.createdAt === datum.createdAt && !ts ? "active" : ""
               }
             >
-              <Link to={`/${active.id}/${datum.createdAt}`}>
+              <Link to={`/${active?.id}/${datum.createdAt}`}>
                 <pre>
                   {datum.method} /{datum.id}
                 </pre>
