@@ -34,7 +34,7 @@ const NewRequest = ({ appointmentURI }) => {
         {script(appointmentURI + "/" + id)}
       </script>
       <button
-        onClick={e =>
+        onClick={() =>
           evaluate(document.getElementById("script").innerHTML, _ => _)
         }
       >

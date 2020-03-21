@@ -3,7 +3,6 @@ import "./App.scss";
 import Home from "./Home";
 import Appointment from "./Appointment";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-const pizz = "jam";
 const App = () => (
   <Router>
     <h1>

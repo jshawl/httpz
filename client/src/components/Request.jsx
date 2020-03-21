@@ -27,10 +27,10 @@ const Request = ({ data, onDelete }) => {
         </pre>
       </h2>
       <time>{data.createdAt}</time>
-      <button className="delete" onClick={e => onDelete(data)}>
+      <button className="delete" onClick={() => onDelete(data)}>
         delete
       </button>
-      <div class="payload">
+      <div className="payload">
         <h3>Request Body</h3>
         <ReactJson
           src={parseJSON(data.payload)}
@@ -41,7 +41,7 @@ const Request = ({ data, onDelete }) => {
           iconStyle="triangle"
         />
       </div>
-      <div class="headers">
+      <div className="headers">
         <h3>Request Headers</h3>
         <ReactJson
           src={data.headers}
