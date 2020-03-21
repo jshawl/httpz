@@ -15,7 +15,20 @@ body,
   overflow-y: scroll;
 }
 
+button {
+  border: 1px solid #222;
+  border-radius: 3px;
+  font: inherit;
+  cursor: pointer;
+  padding: 0.5em 1rem;
+  &:hover {
+    background: #222;
+    color: #fff;
+  }
+}
+
 .App {
+  padding: 1em;
   padding-top: 3.5em;
 }
 
@@ -24,10 +37,20 @@ h1 {
   background: #fff;
   width: 100%;
   top: 0;
+  left: 0;
+  padding: 1rem;
   margin: 0;
   font-size: 1rem;
-  padding-left: 1rem;
-  padding-top: 1rem;
+  line-height: 1rem;
+  z-index: 2;
+  border-bottom: 1px solid #222;
+}
+
+pre.bash {
+  position: relative;
+  &:before {
+    content: "$ ";
+  }
 }
 
 .flex {

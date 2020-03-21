@@ -1,6 +1,7 @@
 .Request {
   flex: 4 !important;
-  padding-left: 1em;
+  padding: 1em;
+  position: relative;
   h2,
   h2 > pre {
     margin: 0;

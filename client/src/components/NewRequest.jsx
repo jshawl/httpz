@@ -1,6 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import "./NewRequest.scss";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
 
 const script = uri =>
   `fetch('${uri}',{
@@ -10,11 +12,7 @@ const script = uri =>
   },
   body: JSON.stringify({
     ok: true,
-    wow: {
-      this: {
-        is: 'cool'
-      }
-    }
+    createdAt: new Date()
   })
 })`;
 
@@ -29,33 +27,62 @@ const NewRequest = ({ appointmentURI }) => {
   const { id } = useParams();
   return (
     <div className="Request NewRequest">
-      <h3>JavaScript</h3>
-      <script id="script" type="text/demo" style={{ display: "block" }}>
-        {script(appointmentURI + "/" + id)}
-      </script>
-      <button
-        onClick={() =>
-          evaluate(document.getElementById("script").innerHTML, _ => _)
-        }
-      >
-        Run Snippet
-      </button>
-      <br />
-      <h3>cURL</h3>
-      <pre className="bash wrap">
-        curl -X POST -d
-        "shop[name]=Supermarket&shop[products][]=fruit&shop[products][]=eggs"{" "}
-        {appointmentURI}/{id}
-      </pre>
-      <pre className="bash wrap">
-        curl -X PATCH -d "this=is&so=cool" {appointmentURI}/{id}
-      </pre>
-      <pre className="bash wrap">
-        curl -X PUT -d "this=is&so=cool" {appointmentURI}/{id}
-      </pre>
-      <pre className="bash wrap">
-        curl -X DELETE {appointmentURI}/{id}
-      </pre>
+      <Tabs>
+        <TabList>
+          <Tab>JavaScript</Tab>
+          <Tab>curl</Tab>
+          <Tab>Webhooks</Tab>
+        </TabList>
+        <TabPanel>
+          <p>content-editable javascript:</p>
+          <script
+            id="script"
+            contenteditable="true"
+            type="text/demo"
+            style={{ display: "block" }}
+          >
+            {script(appointmentURI + "/" + id)}
+          </script>
+          <button
+            onClick={() =>
+              evaluate(document.getElementById("script").innerHTML, _ => _)
+            }
+          >
+            Run Snippet
+          </button>
+        </TabPanel>
+        <TabPanel>
+          <p>query strings amirite</p>
+          <pre className="bash">
+            curl -X <strong>POST</strong> -d
+            "shop[name]=Supermarket&shop[products][]=fruit&shop[products][]=eggs"{" "}
+            {appointmentURI}/{id}
+          </pre>
+          <p>but also json</p>
+          <pre className="bash">
+            curl -X <strong>POST</strong> -d \ '{"{"}"json":"rocks"}' -H
+            'Content-Type: application/json' {appointmentURI}/{id}
+          </pre>
+          <p>and the other http verbs too</p>
+          <pre className="bash wrap">
+            curl -X <strong>PATCH</strong> -d "this=is&so=cool" {appointmentURI}
+            /{id}
+          </pre>
+          <pre className="bash wrap">
+            curl -X <strong>PUT</strong> -d "this=is&so=cool" {appointmentURI}/
+            {id}
+          </pre>
+          <pre className="bash wrap">
+            curl -X <strong>DELETE</strong> {appointmentURI}/{id}
+          </pre>
+        </TabPanel>
+        <TabPanel>
+          <p>this is your webhook url:</p>
+          <pre class="wrap">
+            {appointmentURI}/{id}
+          </pre>
+        </TabPanel>
+      </Tabs>
     </div>
   );
 };
