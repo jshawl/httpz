@@ -14,7 +14,10 @@ const Requests = ({ data, active, ts, appointmentId }) => (
               data-key={datum.createdAt}
               key={datum.createdAt}
               className={
-                active.createdAt === datum.createdAt && ts !== "new" && "active"
+                active &&
+                active.createdAt === datum.createdAt &&
+                ts !== "new" &&
+                "active"
               }
             >
               <Link to={`/${appointmentId}/${datum.createdAt}`}>

@@ -1,6 +1,5 @@
 import React from "react";
 import "./Request.scss";
-
 import ReactJson from "react-json-view";
 
 const parseJSON = stringOrObject => {

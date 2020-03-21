@@ -7,36 +7,28 @@
     white-space: pre;
     margin-bottom: 1em;
   }
-  pre {
-    padding: 0.25em;
+  .react-tabs__tab-list,
+  .react-tabs__tab--selected {
+    border-color: #222;
+  }
+  .react-tabs__tab-list {
+    margin-bottom: 0;
+  }
+  .react-tabs__tab-panel--selected {
+    border: 1px solid #222;
+    padding: 1em;
+    border-top: none;
   }
   script,
   pre {
-    font-size: 0.8rem;
-    border: 1px solid #ebebeb;
+    padding: 0.25em;
+    border: 1px solid #222;
     border-radius: 3px;
-  }
-  pre.bash {
-    position: relative;
-    &:before {
-      content: "$ ";
-    }
-  }
-  h3 {
-    margin-top: 0;
+    font-size: 1.2rem;
   }
 
-  button {
-    background-color: limegreen;
-    border: none;
-    font: inherit;
-    color: #fff;
-    padding: 1em 2em;
-    text-decoration: none;
-    font-weight: bold;
-    display: block;
-    cursor: pointer;
-    text-shadow: 1px 1px 0 #647b1b;
+  h3 {
+    margin-top: 0;
   }
 
   pre.wrap {
