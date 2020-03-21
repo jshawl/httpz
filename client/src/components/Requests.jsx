@@ -9,15 +9,21 @@ const Requests = ({ data, active, children, ts, appointmentId }) => (
     <ul>
       <TransitionGroup>
         {data.map((datum, i) => (
-          <CSSTransition timeout={2000} key={datum.createdAt}>
+          <CSSTransition
+            timeout={500}
+            transitionLeaveTimeout={0}
+            key={datum.createdAt}
+          >
             <li
               data-key={datum.createdAt}
               key={datum.createdAt}
               className={
-                active?.createdAt === datum.createdAt && !ts ? "active" : ""
+                active?.createdAt === datum.createdAt &&
+                ts !== "new" &&
+                "active"
               }
             >
-              <Link to={`/${active?.id}/${datum.createdAt}`}>
+              <Link to={`/${appointmentId}/${datum.createdAt}`}>
                 <pre>
                   {datum.method} /{datum.id}
                 </pre>

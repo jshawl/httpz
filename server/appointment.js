@@ -6,7 +6,7 @@ var appointmentSchema = new mongoose.Schema({
 
 appointmentSchema.statics.receive = function(id, req, callback) {
   this.findOne({ _id: id }, (err, apt) => {
-    if (err) return res(err);
+    if (err) return callback(err);
     var request = {
       headers: req.headers,
       method: req.method,
