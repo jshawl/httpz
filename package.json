@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node server/index.js",
-    "postinstall": "(cd server && npm install); (cd client && yarn install)"
+    "postinstall": "(cd server && npm install); (cd client && yarn install)",
+    "heroku-postbuild": "cd client && yarn run build"
   }
 }
