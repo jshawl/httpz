@@ -16,14 +16,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: yarn
         run: yarn
-        env:
-          CI: true
-  lint:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: "prettier --check"
+      - name: lint
         run: yarn format:check
         env:
           CI: true
