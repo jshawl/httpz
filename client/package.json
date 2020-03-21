@@ -27,9 +27,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build -b master"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": {
     "production": [
       ">0.2%",
