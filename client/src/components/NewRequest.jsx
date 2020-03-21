@@ -37,7 +37,7 @@ const NewRequest = ({ appointmentURI }) => {
           <p>content-editable javascript:</p>
           <script
             id="script"
-            contenteditable="true"
+            contentEditable="true"
             type="text/demo"
             style={{ display: "block" }}
           >
@@ -60,7 +60,7 @@ const NewRequest = ({ appointmentURI }) => {
           </pre>
           <p>but also json</p>
           <pre className="bash">
-            curl -X <strong>POST</strong> -d \ '{"{"}"json":"rocks"}' -H
+            curl -X <strong>POST</strong> -d \ '{"{"}"json":"rocks"{"}"}' -H
             'Content-Type: application/json' {appointmentURI}/{id}
           </pre>
           <p>and the other http verbs too</p>
@@ -78,7 +78,7 @@ const NewRequest = ({ appointmentURI }) => {
         </TabPanel>
         <TabPanel>
           <p>this is your webhook url:</p>
-          <pre class="wrap">
+          <pre className="wrap">
             {appointmentURI}/{id}
           </pre>
         </TabPanel>

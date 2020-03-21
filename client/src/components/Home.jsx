@@ -20,8 +20,8 @@ export default function() {
       </button>
       <p>^^ Click this button and I'll create a special url just for you.</p>
       <p>Then you test your curl skills with</p>
-      <pre class="bash">
-        curl -X POST -d '{"{"}"radi":"cool"}' https://httpz.app/:id
+      <pre className="bash">
+        curl -X POST -d '{"{"}"radi":"cool"{"}"}' https://httpz.app/:id
       </pre>
       <p>
         or maybe you want to save a webhook request and inspect the payload idk.
