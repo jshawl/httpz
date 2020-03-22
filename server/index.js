@@ -35,6 +35,7 @@ var handler = io => (req, res) => {
 
 app.get("/:id.json", (req, res) => {
   Appointment.findOne({ _id: req.params.id }, function(err, apt) {
+    console.log(err || apt);
     res.json(err || apt);
   });
 });

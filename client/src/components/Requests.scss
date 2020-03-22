@@ -25,8 +25,9 @@
     text-align: left;
 
     li {
-      border-bottom: 1px solid white;
       cursor: pointer;
+      border: 1px solid #fff;
+      border-radius: 3px;
       a {
         padding: 0.5em 1em;
         display: block;
@@ -40,6 +41,12 @@
       }
       a:not(.try-it) {
         color: inherit;
+      }
+      &:last-child {
+        border: 1px solid #222;
+      }
+      &.active + :last-child {
+        border-top: 1px solid transparent;
       }
 
       &.active {
