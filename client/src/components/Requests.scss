@@ -4,6 +4,9 @@
   flex: 1;
   width: 300px;
   height: 100%;
+  @media all and (max-width: 40em) {
+    height: auto;
+  }
   h2 {
     padding-left: 1rem;
   }
