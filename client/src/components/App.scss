@@ -4,6 +4,34 @@
 * {
   box-sizing: border-box;
 }
+@keyframes loading {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.loading {
+  position: relative;
+  display: inline-block;
+  padding-left: 1rem;
+}
+.loading span {
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  animation: loading 0.5s infinite step-end;
+  display: inline-block;
+  @for $i from 1 through 4 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i / 8}s;
+    }
+  }
+}
 
 html,
 body,

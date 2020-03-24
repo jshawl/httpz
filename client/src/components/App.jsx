@@ -3,6 +3,16 @@ import "./App.scss";
 import Home from "./Home";
 import Appointment from "./Appointment";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+const Loading = () => (
+  <div className="loading">
+    <span>/</span>
+    <span>-</span>
+    <span>\</span>
+    <span>|</span>
+    <div>Loading...</div>
+  </div>
+);
 const App = () => (
   <Router>
     <div className="App">
@@ -38,6 +48,8 @@ const App = () => (
           </svg>
         </a>
       </h1>
+
+      <Loading />
       <Switch>
         <Route path="/:id/:ts" component={Appointment} />
         <Route path="/" component={Home} />
