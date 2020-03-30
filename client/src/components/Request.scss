@@ -17,17 +17,38 @@
     padding: 1em;
     word-break: break-all;
   }
-  .delete {
-    color: #db2828;
-    padding: 0.25em 0.5em;
-    display: inline-block;
-    border-radius: 3px;
-    font: inherit;
-    border: 1px solid #db2828;
-    cursor: pointer;
+  .controls{
     position: absolute;
     right: 1em;
     top: 1em;
+    border: 1px solid #222;
+    padding: 1em;
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    flex-direction: column;
+    z-index: 2;
+    button{
+      flex: 1;
+      padding: 0.25em 0.5em;
+      font: inherit;
+      cursor: pointer;
+      margin-top: 1em;
+      &:first-of-type{
+        margin-top: 0;
+      }
+    }
+    input{
+      margin-top:5px;
+      font: inherit;
+    }
+  }
+  .delete {
+    color: #db2828;
+    display: inline-block;
+    border-radius: 3px;
+    border: 1px solid #db2828;
+    
     &:hover,
     &:active {
       background: #db2828;

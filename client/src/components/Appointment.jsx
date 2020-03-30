@@ -52,9 +52,9 @@ class Appointment extends Component {
           ts={ts}
         />
         {ts === "new" ? (
-          <NewRequest appointmentURI={API_URL} />
+          <NewRequest appointmentURI={API_URL + "/" + id} />
         ) : (
-          <Request data={active} onDelete={this.onDelete} />
+          <Request appointmentURI={API_URL + "/" + id} data={active} onDelete={this.onDelete} />
         )}
       </div>
     );

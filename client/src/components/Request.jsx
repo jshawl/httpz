@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "./Request.scss";
 import ReactJson from "react-json-view";
+import Popup from "reactjs-popup";
+
 
 const parseJSON = stringOrObject => {
   let o;
@@ -16,7 +18,23 @@ const parseJSON = stringOrObject => {
   return o;
 };
 
-const Request = ({ data, onDelete }) => {
+const request = (data, url) => {
+  data.headers["content-type"] = "application/json"
+  console.log('fetching', url, data)
+  fetch(url, {
+    method: data.method,
+    headers: data.headers,
+    body: JSON.stringify(data.payload)
+  }).then((err,res) => {
+    console.log('got', err, res)
+  })
+}
+
+const Request = ({ data, onDelete, appointmentURI }) => {
+  const [url, setUrl] = useState(localStorage.getItem("httpz.proxy.url") || appointmentURI)
+  useEffect(() => {
+    localStorage.setItem("httpz.proxy.url", url)
+  },[url])
   if (!data) return <div className="Request">Gone.</div>;
   return (
     <div className="Request">
@@ -26,9 +44,16 @@ const Request = ({ data, onDelete }) => {
         </pre>
       </h2>
       <time>{data.createdAt}</time>
-      <button className="delete" onClick={() => onDelete(data)}>
-        delete
-      </button>
+      <div class='controls'>
+        <button onClick={() => {
+          request(data, url)
+        }}>Resend request to</button>
+        <input value={url} onChange={(e) => setUrl(e.target.value)} placeholder="http://localhost:3000/" type="text" />
+        
+        <button className="delete" onClick={() => onDelete(data, url)}>
+          Delete
+        </button>
+      </div>
       <div className="payload">
         <h3>Request Body</h3>
         <ReactJson
