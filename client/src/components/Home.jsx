@@ -4,13 +4,13 @@ import { API_URL } from "../config";
 import json from "./HomeDemo.js";
 import ReactJson from "react-json-view";
 
-const createAppointment = (callback) => {
+const createAppointment = callback => {
   fetch(`${API_URL}/appointments/create.json`)
-    .then((response) => response.json())
-    .then((d) => callback(d));
+    .then(response => response.json())
+    .then(d => callback(d));
 };
 
-export default function () {
+export default function() {
   const [appointment, setAppointment] = useState(null);
   return !appointment ? (
     <div>

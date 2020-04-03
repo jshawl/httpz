@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Request.scss";
 import ReactJson from "react-json-view";
 
-const parseJSON = (stringOrObject) => {
+const parseJSON = stringOrObject => {
   let o;
   try {
     o = JSON.parse(stringOrObject);
@@ -21,10 +21,10 @@ const request = ({ method, headers, payload }, url, callback) => {
   fetch(url, {
     method: method,
     headers: headers,
-    body: JSON.stringify(payload),
+    body: JSON.stringify(payload)
   })
     .then(callback)
-    .catch((err) => callback(err.toString()));
+    .catch(err => callback(err.toString()));
 };
 
 const Request = ({ data, onDelete, appointmentURI }) => {
@@ -72,7 +72,7 @@ const Request = ({ data, onDelete, appointmentURI }) => {
         <button
           onClick={() => {
             setLoading(true);
-            request(data, url, (res) => {
+            request(data, url, res => {
               setLoading(false);
               setResponse(res);
             });
@@ -91,7 +91,7 @@ const Request = ({ data, onDelete, appointmentURI }) => {
         </div>
         <input
           value={url}
-          onChange={(e) => setUrl(e.target.value)}
+          onChange={e => setUrl(e.target.value)}
           placeholder="http://localhost:3000/"
           type="text"
         />

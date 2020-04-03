@@ -1,10 +1,10 @@
 var mongoose = require("mongoose");
 var appointmentSchema = new mongoose.Schema({
   createdAt: { type: Date },
-  requests: { type: Array },
+  requests: { type: Array }
 });
 
-appointmentSchema.statics.receive = function (id, req, callback) {
+appointmentSchema.statics.receive = function(id, req, callback) {
   this.findOne({ _id: id }, (err, apt) => {
     if (err) return callback(err);
     var request = {
@@ -12,7 +12,7 @@ appointmentSchema.statics.receive = function (id, req, callback) {
       method: req.method,
       payload: req.body || req.query,
       createdAt: new Date().toISOString(),
-      id: apt._id,
+      id: apt._id
     };
     apt.requests.push(request);
     apt.save();

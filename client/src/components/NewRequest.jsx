@@ -3,7 +3,7 @@ import "./NewRequest.scss";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
-const script = (uri) =>
+const script = uri =>
   `fetch('${uri}',{
   method: 'PUT',
   headers: {
@@ -18,7 +18,7 @@ const script = (uri) =>
 const evaluate = (code, callback) => {
   // eslint-disable-next-line
   eval(code)
-    .then((res) => res.json())
+    .then(res => res.json())
     .then(callback);
 };
 
@@ -43,7 +43,7 @@ const NewRequest = ({ appointmentURI }) => {
           </script>
           <button
             onClick={() =>
-              evaluate(document.getElementById("script").innerHTML, (_) => _)
+              evaluate(document.getElementById("script").innerHTML, _ => _)
             }
           >
             Run Snippet
