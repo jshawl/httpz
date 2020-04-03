@@ -27,6 +27,12 @@
     li {
       border-bottom: 1px solid white;
       cursor: pointer;
+      &:first-child time {
+        border: 1px solid #FFD000;
+        padding: .25em .5em;
+        border-radius: 3px;
+        display: inline-block;
+      }
       a {
         padding: 0.5em 1em;
         display: block;

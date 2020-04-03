@@ -1,8 +1,7 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./Request.scss";
 import ReactJson from "react-json-view";
 import Popup from "reactjs-popup";
-
 
 const parseJSON = stringOrObject => {
   let o;
@@ -18,23 +17,26 @@ const parseJSON = stringOrObject => {
   return o;
 };
 
-const request = (data, url) => {
-  data.headers["content-type"] = "application/json"
-  console.log('fetching', url, data)
+const request = ({ method, headers, payload }, url, callback) => {
+  headers["content-type"] = "application/json";
   fetch(url, {
-    method: data.method,
-    headers: data.headers,
-    body: JSON.stringify(data.payload)
-  }).then((err,res) => {
-    console.log('got', err, res)
+    method: method,
+    headers: headers,
+    body: JSON.stringify(payload)
   })
-}
+    .then(callback)
+    .catch(err => callback(err.toString()));
+};
 
 const Request = ({ data, onDelete, appointmentURI }) => {
-  const [url, setUrl] = useState(localStorage.getItem("httpz.proxy.url") || appointmentURI)
+  const [url, setUrl] = useState(
+    localStorage.getItem("httpz.proxy.url") || appointmentURI
+  );
+  const [loading, setLoading] = useState(false);
+  const [response, setResponse] = useState();
   useEffect(() => {
-    localStorage.setItem("httpz.proxy.url", url)
-  },[url])
+    localStorage.setItem("httpz.proxy.url", url);
+  }, [url]);
   if (!data) return <div className="Request">Gone.</div>;
   return (
     <div className="Request">
@@ -44,16 +46,6 @@ const Request = ({ data, onDelete, appointmentURI }) => {
         </pre>
       </h2>
       <time>{data.createdAt}</time>
-      <div class='controls'>
-        <button onClick={() => {
-          request(data, url)
-        }}>Resend request to</button>
-        <input value={url} onChange={(e) => setUrl(e.target.value)} placeholder="http://localhost:3000/" type="text" />
-        
-        <button className="delete" onClick={() => onDelete(data, url)}>
-          Delete
-        </button>
-      </div>
       <div className="payload">
         <h3>Request Body</h3>
         <ReactJson
@@ -75,6 +67,39 @@ const Request = ({ data, onDelete, appointmentURI }) => {
           name={null}
           iconStyle="triangle"
         />
+      </div>
+      <hr />
+      <div class="controls">
+        <button
+          onClick={() => {
+            setLoading(true);
+            request(data, url, res => {
+              setLoading(false);
+              setResponse(res);
+            });
+          }}
+        >
+          Resend{loading && "ing"} request to
+        </button>
+        <div className={response && "response"}>
+          {response?.status ? (
+            <div>
+              {response?.status} {response?.statusText}
+            </div>
+          ) : (
+            <div>{response}</div>
+          )}
+        </div>
+        <input
+          value={url}
+          onChange={e => setUrl(e.target.value)}
+          placeholder="http://localhost:3000/"
+          type="text"
+        />
+        <hr />
+        <button className="delete" onClick={() => onDelete(data, url)}>
+          Delete
+        </button>
       </div>
     </div>
   );

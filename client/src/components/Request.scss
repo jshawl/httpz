@@ -17,46 +17,48 @@
     padding: 1em;
     word-break: break-all;
   }
-  .controls{
-    position: absolute;
-    right: 1em;
-    top: 1em;
-    border: 1px solid #222;
-    padding: 1em;
-    display: flex;
-    align-items: flex-end;
-    flex-wrap: wrap;
-    flex-direction: column;
+  .response {
+    border: 1px solid #ebebeb;
+    display: inline-block;
+    margin-left: 1rem;
+    padding: 0.25rem;
+  }
+  .controls {
+    align-items: center;
+    justify-content: center;
     z-index: 2;
-    button{
-      flex: 1;
+    margin-top: 2em;
+    flex-wrap: wrap;
+    button,
+    input {
       padding: 0.25em 0.5em;
       font: inherit;
+      border-radius: 3px;
+    }
+    button {
       cursor: pointer;
-      margin-top: 1em;
-      &:first-of-type{
-        margin-top: 0;
+    }
+    input {
+      margin-top: 5px;
+      display: block;
+      border: 1px solid #bbb;
+      width: 100%;
+    }
+    .delete {
+      color: #db2828;
+      display: inline-block;
+      border-radius: 3px;
+      border: 1px solid #db2828;
+
+      &:hover,
+      &:active {
+        background: #db2828;
+        color: #fff;
       }
-    }
-    input{
-      margin-top:5px;
-      font: inherit;
-    }
-  }
-  .delete {
-    color: #db2828;
-    display: inline-block;
-    border-radius: 3px;
-    border: 1px solid #db2828;
-    
-    &:hover,
-    &:active {
-      background: #db2828;
-      color: #fff;
-    }
-    &:focus {
-      outline: none;
-      box-shadow: 0 0 3px #db2828;
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 3px #db2828;
+      }
     }
   }
 }
