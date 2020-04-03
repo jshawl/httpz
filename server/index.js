@@ -1,19 +1,20 @@
+require("./db")();
 var express = require("express");
-require("./db.js")();
 var app = express();
 var bodyParser = require("body-parser");
 var cors = require("cors");
 var path = require("path");
+var logger = require("./logger");
+var Appointment = require("./appointment.js");
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(logger);
 app.use(express.static(path.join(__dirname, "../client/build")));
 var server = require("http").Server(app);
 var io = require("socket.io")(server);
-var Appointment = require("./appointment.js");
 
 io.sockets.on("connection", function (socket) {
-  console.log(socket.handshake.headers.referer);
   const { referer } = socket.handshake.headers;
   if (!referer) return;
   const ref = referer.split("/");
