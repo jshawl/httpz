@@ -12,7 +12,7 @@ var server = require("http").Server(app);
 var io = require("socket.io")(server);
 var Appointment = require("./appointment.js");
 
-io.sockets.on("connection", function(socket) {
+io.sockets.on("connection", function (socket) {
   console.log(socket.handshake.headers.referer);
   const { referer } = socket.handshake.headers;
   if (!referer) return;
@@ -21,20 +21,20 @@ io.sockets.on("connection", function(socket) {
   socket.join(ref[ref.length - 1]);
 });
 
-var handler = io => (req, res) => {
-  Appointment.receive(req.params.id, req, request => {
+var handler = (io) => (req, res) => {
+  Appointment.receive(req.params.id, req, (request) => {
     io.to(req.params.id).emit("proxy", request.payload);
     io.to(req.params.id).emit("request", request);
     res.send(request);
   });
 };
 
-["POST", "PUT", "PATCH", "DELETE"].map(method => {
+["POST", "PUT", "PATCH", "DELETE"].map((method) => {
   app[method.toLowerCase()]("/:id", handler(io));
 });
 
 app.get("/:id.json", (req, res) => {
-  Appointment.findOne({ _id: req.params.id }, function(err, apt) {
+  Appointment.findOne({ _id: req.params.id }, function (err, apt) {
     res.json(err || apt);
   });
 });
@@ -49,7 +49,7 @@ app.delete("/:id/:ts.json", (req, res) => {
 
 app.get("/appointments/create.json", (req, res) => {
   var apt = new Appointment({
-    createdAt: new Date()
+    createdAt: new Date(),
   });
   apt.save((err, apt) => res.json(err || apt));
 });

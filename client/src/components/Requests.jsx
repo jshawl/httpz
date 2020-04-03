@@ -8,7 +8,7 @@ const Requests = ({ data, active, ts, appointmentId }) => (
   <div className="Requests">
     <ul>
       <TransitionGroup>
-        {data.map(datum => (
+        {data.map((datum) => (
           <CSSTransition timeout={0} key={datum.createdAt}>
             <li
               data-key={datum.createdAt}
