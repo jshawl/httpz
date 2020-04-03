@@ -1,8 +1,9 @@
 {
-  "name": "restful.link",
+  "name": "httpz.app",
+  "description": "Inspect HTTP requests",
   "version": "1.0.0",
   "main": "server/index.js",
-  "repository": "https://github.com/jshawl/restful-link.git",
+  "repository": "https://github.com/jshawl/httpz.git",
   "author": "Jesse Shawl <jesse@jesse.sh>",
   "license": "MIT",
   "scripts": {
