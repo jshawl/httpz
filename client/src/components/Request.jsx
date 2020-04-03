@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Request.scss";
 import ReactJson from "react-json-view";
-import Popup from "reactjs-popup";
 
 const parseJSON = stringOrObject => {
   let o;
@@ -69,7 +68,7 @@ const Request = ({ data, onDelete, appointmentURI }) => {
         />
       </div>
       <hr />
-      <div class="controls">
+      <div className="controls">
         <button
           onClick={() => {
             setLoading(true);
@@ -82,9 +81,9 @@ const Request = ({ data, onDelete, appointmentURI }) => {
           Resend{loading && "ing"} request to
         </button>
         <div className={response && "response"}>
-          {response?.status ? (
+          {response && response.status ? (
             <div>
-              {response?.status} {response?.statusText}
+              {response.status} {response.statusText}
             </div>
           ) : (
             <div>{response}</div>
