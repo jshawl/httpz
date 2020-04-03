@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Request.scss";
 import ReactJson from "react-json-view";
 
@@ -16,7 +16,26 @@ const parseJSON = stringOrObject => {
   return o;
 };
 
-const Request = ({ data, onDelete }) => {
+const request = ({ method, headers, payload }, url, callback) => {
+  headers["content-type"] = "application/json";
+  fetch(url, {
+    method: method,
+    headers: headers,
+    body: JSON.stringify(payload)
+  })
+    .then(callback)
+    .catch(err => callback(err.toString()));
+};
+
+const Request = ({ data, onDelete, appointmentURI }) => {
+  const [url, setUrl] = useState(
+    localStorage.getItem("httpz.proxy.url") || appointmentURI
+  );
+  const [loading, setLoading] = useState(false);
+  const [response, setResponse] = useState();
+  useEffect(() => {
+    localStorage.setItem("httpz.proxy.url", url);
+  }, [url]);
   if (!data) return <div className="Request">Gone.</div>;
   return (
     <div className="Request">
@@ -26,9 +45,6 @@ const Request = ({ data, onDelete }) => {
         </pre>
       </h2>
       <time>{data.createdAt}</time>
-      <button className="delete" onClick={() => onDelete(data)}>
-        delete
-      </button>
       <div className="payload">
         <h3>Request Body</h3>
         <ReactJson
@@ -50,6 +66,39 @@ const Request = ({ data, onDelete }) => {
           name={null}
           iconStyle="triangle"
         />
+      </div>
+      <hr />
+      <div className="controls">
+        <button
+          onClick={() => {
+            setLoading(true);
+            request(data, url, res => {
+              setLoading(false);
+              setResponse(res);
+            });
+          }}
+        >
+          Resend{loading && "ing"} request to
+        </button>
+        <div className={response && "response"}>
+          {response && response.status ? (
+            <div>
+              {response.status} {response.statusText}
+            </div>
+          ) : (
+            <div>{response}</div>
+          )}
+        </div>
+        <input
+          value={url}
+          onChange={e => setUrl(e.target.value)}
+          placeholder="http://localhost:3000/"
+          type="text"
+        />
+        <hr />
+        <button className="delete" onClick={() => onDelete(data, url)}>
+          Delete
+        </button>
       </div>
     </div>
   );
