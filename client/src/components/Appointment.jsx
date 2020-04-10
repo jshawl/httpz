@@ -40,10 +40,10 @@ class Appointment extends Component {
   render() {
     const { requests } = this.state;
     const { ts, id } = this.props.match.params;
-    const active = requests?.find(d => d.createdAt === ts);
-    const data = requests?.sort(
-      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-    );
+    const active = requests && requests.find(d => d.createdAt === ts);
+    const data =
+      requests &&
+      requests.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     return (
       <div className="flex" data-testid="appointment">
         {requests ? (
