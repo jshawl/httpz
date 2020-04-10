@@ -4,6 +4,7 @@
   position: relative;
   @media all and (max-width: 40em) {
     flex: auto !important;
+    padding: 2em 0;
   }
   h2,
   h2 > pre {

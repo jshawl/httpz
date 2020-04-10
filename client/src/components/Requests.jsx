@@ -2,15 +2,27 @@ import React from "react";
 import { Link, Redirect } from "react-router-dom";
 import "./Requests.scss";
 import * as timeago from "timeago.js";
+import Select from "react-select";
 
 const Requests = ({ data, active, ts, appointmentId }) => {
   const [redirect, setRedirect] = React.useState(null);
   return (
     <div className="Requests">
       {redirect && <Redirect to={redirect} />}
-      <select
-        onChange={e => setRedirect(`/${appointmentId}/${e.target.value}`)}
-      >
+      <Select
+        placeholder="Recent Requests"
+        onChange={({ value }) => setRedirect(`/${appointmentId}/${value}`)}
+        options={[
+          { value: "new", label: "try it" },
+          ...data.map(d => ({
+            value: d.createdAt,
+            label: `${d.method}/${d.id} - ${timeago.format(
+              new Date(d.createdAt)
+            )}`
+          }))
+        ]}
+      />
+      {/*<select>
         {data.map(datum => (
           <option
             value={datum.createdAt}
@@ -24,7 +36,7 @@ const Requests = ({ data, active, ts, appointmentId }) => {
           </option>
         ))}
         <option value="new">Try it</option>
-      </select>
+      </select>*/}
       <ul style={{ display: "none" }}>
         {data.map(datum => (
           <li

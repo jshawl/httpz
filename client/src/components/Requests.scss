@@ -6,6 +6,11 @@
   height: 100%;
   @media all and (max-width: 40em) {
     height: auto;
+    overflow: visible;
+  }
+  select {
+    border: 1px solid #222;
+    padding: 0.5em;
   }
   h2 {
     padding-left: 1rem;
