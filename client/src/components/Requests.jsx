@@ -22,21 +22,6 @@ const Requests = ({ data, active, ts, appointmentId }) => {
           }))
         ]}
       />
-      {/*<select>
-        {data.map(datum => (
-          <option
-            value={datum.createdAt}
-            key={datum.createdAt}
-            defaultValue={
-              active && active.createdAt === datum.createdAt && ts !== "new"
-            }
-          >
-            {datum.method} /{datum.id}
-            {timeago.format(new Date(datum.createdAt))}
-          </option>
-        ))}
-        <option value="new">Try it</option>
-      </select>*/}
       <ul style={{ display: "none" }}>
         {data.map(datum => (
           <li
