@@ -1,8 +1,7 @@
 {
-  "name": "client",
+  "name": "httpz.client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://restful-link.github.io/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -42,6 +41,6 @@
     ]
   },
   "devDependencies": {
-    "prettier": "1.19.1"
+    "prettier": "2.0.2"
   }
 }

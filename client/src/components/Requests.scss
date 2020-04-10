@@ -36,6 +36,12 @@
       cursor: pointer;
       border: 1px solid #fff;
       border-radius: 3px;
+      &:first-child time {
+        border: 1px solid #ffd000;
+        padding: 0.25em 0.5em;
+        border-radius: 3px;
+        display: inline-block;
+      }
       a {
         padding: 0.5em 1em;
         display: block;

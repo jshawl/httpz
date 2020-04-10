@@ -1,5 +1,4 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import "./NewRequest.scss";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
@@ -24,7 +23,6 @@ const evaluate = (code, callback) => {
 };
 
 const NewRequest = ({ appointmentURI }) => {
-  const { id } = useParams();
   return (
     <div className="Request NewRequest">
       <Tabs>
@@ -41,7 +39,7 @@ const NewRequest = ({ appointmentURI }) => {
             type="text/demo"
             style={{ display: "block" }}
           >
-            {script(appointmentURI + "/" + id)}
+            {script(appointmentURI)}
           </script>
           <button
             onClick={() =>
@@ -56,31 +54,27 @@ const NewRequest = ({ appointmentURI }) => {
           <pre className="bash">
             curl -X <strong>POST</strong> -d
             "shop[name]=Supermarket&shop[products][]=fruit&shop[products][]=eggs"{" "}
-            {appointmentURI}/{id}
+            {appointmentURI}
           </pre>
           <p>but also json</p>
           <pre className="bash">
             curl -X <strong>POST</strong> -d \ '{"{"}"json":"rocks"{"}"}' -H
-            'Content-Type: application/json' {appointmentURI}/{id}
+            'Content-Type: application/json' {appointmentURI}
           </pre>
           <p>and the other http verbs too</p>
           <pre className="bash wrap">
             curl -X <strong>PATCH</strong> -d "this=is&so=cool" {appointmentURI}
-            /{id}
           </pre>
           <pre className="bash wrap">
-            curl -X <strong>PUT</strong> -d "this=is&so=cool" {appointmentURI}/
-            {id}
+            curl -X <strong>PUT</strong> -d "this=is&so=cool" {appointmentURI}
           </pre>
           <pre className="bash wrap">
-            curl -X <strong>DELETE</strong> {appointmentURI}/{id}
+            curl -X <strong>DELETE</strong> {appointmentURI}
           </pre>
         </TabPanel>
         <TabPanel>
           <p>this is your webhook url:</p>
-          <pre className="wrap">
-            {appointmentURI}/{id}
-          </pre>
+          <pre className="wrap">{appointmentURI}</pre>
         </TabPanel>
       </Tabs>
     </div>

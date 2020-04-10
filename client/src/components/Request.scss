@@ -21,25 +21,48 @@
     padding: 1em;
     word-break: break-all;
   }
-  .delete {
-    color: #db2828;
-    padding: 0.25em 0.5em;
+  .response {
+    border: 1px solid #ebebeb;
     display: inline-block;
-    border-radius: 3px;
-    font: inherit;
-    border: 1px solid #db2828;
-    cursor: pointer;
-    position: absolute;
-    right: 1em;
-    top: 1em;
-    &:hover,
-    &:active {
-      background: #db2828;
-      color: #fff;
+    margin-left: 1rem;
+    padding: 0.25rem;
+  }
+  .controls {
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    margin-top: 2em;
+    flex-wrap: wrap;
+    button,
+    input {
+      padding: 0.25em 0.5em;
+      font: inherit;
+      border-radius: 3px;
     }
-    &:focus {
-      outline: none;
-      box-shadow: 0 0 3px #db2828;
+    button {
+      cursor: pointer;
+    }
+    input {
+      margin-top: 5px;
+      display: block;
+      border: 1px solid #bbb;
+      width: 100%;
+    }
+    .delete {
+      color: #db2828;
+      display: inline-block;
+      border-radius: 3px;
+      border: 1px solid #db2828;
+
+      &:hover,
+      &:active {
+        background: #db2828;
+        color: #fff;
+      }
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 3px #db2828;
+      }
     }
   }
 }

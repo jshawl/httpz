@@ -16,6 +16,13 @@ body,
   color: #222;
 }
 
+hr {
+  border: none;
+  height: 1px;
+  background: #ebebeb;
+  margin: 2rem 0;
+}
+
 button {
   border: 1px solid #222;
   border-radius: 3px;
@@ -44,7 +51,10 @@ h1 {
   font-size: 1rem;
   line-height: 1rem;
   z-index: 2;
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid #ebebeb;
+  a {
+    text-decoration: none;
+  }
 }
 
 pre.bash {

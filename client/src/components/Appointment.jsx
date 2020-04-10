@@ -46,22 +46,20 @@ class Appointment extends Component {
       requests.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     return (
       <div className="flex" data-testid="appointment">
-        {requests ? (
-          <React.Fragment>
-            <Requests
-              active={ts === "new" ? data[0] : active}
-              appointmentId={id}
-              data={data}
-              ts={ts}
-            />
-            {ts === "new" ? (
-              <NewRequest appointmentURI={API_URL} />
-            ) : (
-              <Request data={active} onDelete={this.onDelete} />
-            )}
-          </React.Fragment>
+        <Requests
+          active={ts === "new" ? data[0] : active}
+          appointmentId={id}
+          data={data}
+          ts={ts}
+        />
+        {ts === "new" ? (
+          <NewRequest appointmentURI={API_URL + "/" + id} />
         ) : (
-          <div>404</div>
+          <Request
+            appointmentURI={API_URL + "/" + id}
+            data={active}
+            onDelete={this.onDelete}
+          />
         )}
       </div>
     );
