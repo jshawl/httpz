@@ -2,6 +2,10 @@
   flex: 4 !important;
   padding: 1em;
   position: relative;
+  @media all and (max-width: 40em) {
+    flex: auto !important;
+    padding: 2em 0;
+  }
   h2,
   h2 > pre {
     margin: 0;

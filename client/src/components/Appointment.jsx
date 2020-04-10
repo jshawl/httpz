@@ -9,7 +9,7 @@ class Appointment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      requests: []
+      requests: null
     };
     this.onDelete = this.onDelete.bind(this);
   }
@@ -24,8 +24,10 @@ class Appointment extends Component {
     fetch(`${API_URL}/${id}.json`)
       .then(d => d.json())
       .then(d => {
-        let { requests } = d;
-        this.setState({ ...this.state, requests });
+        if (d) {
+          let { requests } = d;
+          this.setState({ ...this.state, requests });
+        }
       });
   }
   onDelete({ id, createdAt }) {
@@ -38,13 +40,12 @@ class Appointment extends Component {
   render() {
     const { requests } = this.state;
     const { ts, id } = this.props.match.params;
-    if (!requests.length && ts !== "new") return <div>Loading...</div>;
-    const active = requests.find(d => d.createdAt === ts);
-    const data = requests.sort(
-      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-    );
+    const active = requests && requests.find(d => d.createdAt === ts);
+    const data =
+      requests &&
+      requests.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     return (
-      <div className="flex">
+      <div className="flex" data-testid="appointment">
         <Requests
           active={ts === "new" ? data[0] : active}
           appointmentId={id}

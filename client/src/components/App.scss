@@ -46,7 +46,7 @@ h1 {
   width: 100%;
   top: 0;
   left: 0;
-  padding: 1rem 2rem;
+  padding: 1rem;
   margin: 0;
   font-size: 1rem;
   line-height: 1rem;
@@ -81,6 +81,7 @@ body {
 
 .flex {
   display: flex;
+  flex-wrap: wrap;
 }
 
 h1,
