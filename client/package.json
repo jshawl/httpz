@@ -16,7 +16,7 @@
     "react-time-ago": "^5.0.7",
     "react-timeago": "^4.4.0",
     "react-transition-group": "^4.3.0",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
