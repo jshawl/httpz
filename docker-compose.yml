@@ -5,3 +5,23 @@ services:
       - "3000:3000"
     volumes:
       - ./client:/app/
+  server:
+    build: server
+    depends_on:
+      - mongodb
+    ports:
+      - "3030:3030"
+    environment:
+      MONGODB_URI: "mongodb://root:root@mongodb:27017/admin"
+    volumes:
+      - ./server:/app/
+  mongodb:
+    image: mongo:latest
+    command: [--auth]
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
