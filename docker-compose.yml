@@ -1,6 +1,8 @@
 services:
   client:
     build: client
+    environment:
+      DEBUG: "engine,socket.io*"
     ports:
       - "3000:3000"
     volumes:
@@ -13,6 +15,7 @@ services:
       - "3030:3030"
     environment:
       MONGODB_URI: "mongodb://root:root@mongodb:27017/admin"
+      # DEBUG: "engine,socket.io*"
     volumes:
       - ./server:/app/
   mongodb:

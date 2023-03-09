@@ -15,11 +15,9 @@ var server = require("http").Server(app);
 var io = require("socket.io")(server);
 
 io.sockets.on("connection", function(socket) {
-  const { referer } = socket.handshake.headers;
-  if (!referer) return;
-  const ref = referer.split("/");
-  ref.pop();
-  socket.join(ref[ref.length - 1]);
+  const { id } = socket.handshake.query;
+  if (!id) return;
+  socket.join(id);
 });
 
 var handler = io => (req, res) => {
@@ -59,4 +57,4 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "/../client/build/index.html"));
 });
 
-server.listen(process.env.PORT || 3030);
+server.listen(process.env.PORT || 3030, '0.0.0.0');

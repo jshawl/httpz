@@ -15,8 +15,9 @@ class Appointment extends Component {
   }
   componentDidMount() {
     const { id } = this.props.match.params;
-    const socket = io(API_URL);
+    const socket = io(API_URL, {query: `id=${id}`});
     socket.on("request", d => {
+      console.log("request!", d)
       let { requests } = this.state;
       requests.push(d);
       this.setState({ ...this.state, requests });
