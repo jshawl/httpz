@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Requests.scss";
+import "./Requests.css";
 import Timeago from "react-timeago";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 

@@ -29,10 +29,11 @@ button {
   font: inherit;
   cursor: pointer;
   padding: 0.5em 1rem;
-  &:hover {
-    background: #222;
-    color: #fff;
-  }
+}
+
+button:hover {
+  background: #222;
+  color: #fff;
 }
 
 .App {
@@ -52,16 +53,19 @@ h1 {
   line-height: 1rem;
   z-index: 2;
   border-bottom: 1px solid #ebebeb;
-  a {
-    text-decoration: none;
-  }
+ 
+}
+h1 a {
+  text-decoration: none;
 }
 
 pre.bash {
   position: relative;
-  &:before {
-    content: "$ ";
-  }
+  
+}
+
+pre.bash:before {
+  content: "$ ";
 }
 
 .flex {

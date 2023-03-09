@@ -1,0 +1,78 @@
+.Requests {
+  padding: 1em;
+  padding-left: 0;
+  flex: 1;
+  width: 300px;
+  height: 100%;
+}
+.Requests h2 {
+  padding-left: 1rem;
+}
+.Requests .enter, .Requests .enter-done {
+  transition: all 1s ease;
+}
+.Requests .soft {
+  opacity: 0.5;
+}
+.Requests .enter-active {
+  background: #ffcd42;
+  transition: all 0.2s ease;
+}
+.Requests ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+.Requests ul li {
+  border-bottom: 1px solid white;
+  cursor: pointer;
+}
+.Requests ul li:first-child time {
+  border: 1px solid #ffd000;
+  padding: 0.25em 0.5em;
+  border-radius: 3px;
+  display: inline-block;
+}
+.Requests ul li a {
+  padding: 0.5em 1em;
+  display: block;
+}
+.Requests ul li pre {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.Requests ul li:hover {
+  background: #f6f6f6;
+}
+.Requests ul li a:not(.try-it) {
+  color: inherit;
+}
+.Requests ul li.active {
+  background: #fff;
+  border: 1px solid #222;
+  position: relative;
+}
+.Requests ul li.active:before {
+  content: "";
+  border: 1px solid #222;
+  border-color: #222 #222 transparent transparent;
+  display: block;
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  transform: translate(50%, -50%) rotate(45deg);
+  background: #fff;
+  height: 10px;
+  width: 10px;
+  border-style: solid;
+}
+.Requests ul li a {
+  text-decoration: none;
+}
+.Requests ul li pre {
+  margin: 0;
+}
+.Requests ul li time {
+  font-size: 0.7em;
+}
