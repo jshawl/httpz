@@ -17,6 +17,9 @@
     "react-transition-group": "^4.3.0",
     "socket.io": "^2.3.0"
   },
+  "engines": {
+    "node": 16
+  },
   "scripts": {
     "start": "react-scripts start",
     "git": "git rev-parse HEAD | cut -c1-7",
