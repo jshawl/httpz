@@ -8,7 +8,8 @@
 .Requests h2 {
   padding-left: 1rem;
 }
-.Requests .enter, .Requests .enter-done {
+.Requests .enter,
+.Requests .enter-done {
   transition: all 1s ease;
 }
 .Requests .soft {

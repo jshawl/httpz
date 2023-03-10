@@ -1,0 +1,1 @@
+docker-entrypoint-initdb.d/mongo-init.js

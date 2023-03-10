@@ -51,7 +51,7 @@ app.get("/appointments/create.json", async (req, res) => {
     createdAt: new Date()
   });
   await apt.save();
-  res.json(apt)
+  res.json(apt);
 });
 
 app.get("*", (req, res) => {

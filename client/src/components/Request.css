@@ -3,10 +3,13 @@
   padding: 1em;
   position: relative;
 }
-.Request h2, .Request h2 > pre {
+.Request h2,
+.Request h2 > pre {
   margin: 0;
 }
-.Request .headers, .Request .payload, .Request pre {
+.Request .headers,
+.Request .payload,
+.Request pre {
   white-space: normal;
 }
 .Request .react-json-view {
@@ -28,7 +31,8 @@
   margin-top: 2em;
   flex-wrap: wrap;
 }
-.Request .controls button, .Request .controls input {
+.Request .controls button,
+.Request .controls input {
   padding: 0.25em 0.5em;
   font: inherit;
   border-radius: 3px;
@@ -48,7 +52,8 @@
   border-radius: 3px;
   border: 1px solid #db2828;
 }
-.Request .controls .delete:hover, .Request .controls .delete:active {
+.Request .controls .delete:hover,
+.Request .controls .delete:active {
   background: #db2828;
   color: #fff;
 }
