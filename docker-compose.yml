@@ -1,0 +1,32 @@
+services:
+  client:
+    build: client
+    environment:
+      DEBUG: "engine,socket.io*"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/app/
+  server:
+    build: server
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    ports:
+      - "3030:3030"
+    environment:
+      MONGODB_URI: "mongodb://root:root@mongodb:27017/admin"
+    volumes:
+      - ./server:/app/
+  mongodb:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+    ports:
+      - 27017:27017
+    volumes:
+      - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+

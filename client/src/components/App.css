@@ -16,6 +16,21 @@ body,
   color: #222;
 }
 
+body {
+  -ms-overflow-style: none;
+  /** For IE */
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  scrollbar-width: none;
+}
+
 hr {
   border: none;
   height: 1px;
@@ -29,10 +44,11 @@ button {
   font: inherit;
   cursor: pointer;
   padding: 0.5em 1rem;
-  &:hover {
-    background: #222;
-    color: #fff;
-  }
+}
+
+button:hover {
+  background: #222;
+  color: #fff;
 }
 
 .App {
@@ -52,16 +68,18 @@ h1 {
   line-height: 1rem;
   z-index: 2;
   border-bottom: 1px solid #ebebeb;
-  a {
-    text-decoration: none;
-  }
+}
+
+h1 a {
+  text-decoration: none;
 }
 
 pre.bash {
   position: relative;
-  &:before {
-    content: "$ ";
-  }
+}
+
+pre.bash:before {
+  content: "$ ";
 }
 
 .flex {
@@ -127,6 +145,7 @@ header {
     width: 100%;
     padding: 0;
   }
+
   .meta abbr {
     margin-top: 0.5em;
     display: block;

@@ -1,0 +1,41 @@
+.NewRequest {
+  flex: 1;
+}
+
+.NewRequest script {
+  color: black;
+  padding: 1em;
+  margin: 0;
+  white-space: pre;
+  margin-bottom: 1em;
+}
+.NewRequest .react-tabs__tab-list,
+.NewRequest .react-tabs__tab--selected {
+  border-color: #222;
+}
+.NewRequest .react-tabs__tab-list {
+  margin-bottom: 0;
+}
+.NewRequest .react-tabs__tab-panel--selected {
+  border: 1px solid #222;
+  padding: 1em;
+  border-top: none;
+}
+.NewRequest script,
+.NewRequest pre {
+  padding: 0.25em;
+  border: 1px solid #222;
+  border-radius: 3px;
+  font-size: 1.2rem;
+  background: #222;
+  color: #fff;
+}
+
+.NewRequest h3 {
+  margin-top: 0;
+}
+
+.NewRequest pre.wrap {
+  white-space: pre-wrap;
+  word-break: break-all;
+}

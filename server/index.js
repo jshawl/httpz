@@ -15,11 +15,9 @@ var server = require("http").Server(app);
 var io = require("socket.io")(server);
 
 io.sockets.on("connection", function(socket) {
-  const { referer } = socket.handshake.headers;
-  if (!referer) return;
-  const ref = referer.split("/");
-  ref.pop();
-  socket.join(ref[ref.length - 1]);
+  const { id } = socket.handshake.query;
+  if (!id) return;
+  socket.join(id);
 });
 
 var handler = io => (req, res) => {
@@ -48,11 +46,12 @@ app.delete("/:id/:ts.json", (req, res) => {
   );
 });
 
-app.get("/appointments/create.json", (req, res) => {
+app.get("/appointments/create.json", async (req, res) => {
   var apt = new Appointment({
     createdAt: new Date()
   });
-  apt.save((err, apt) => res.json(err || apt));
+  await apt.save();
+  res.json(apt);
 });
 
 app.get("*", (req, res) => {
