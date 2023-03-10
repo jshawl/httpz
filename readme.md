@@ -8,5 +8,4 @@ is a service for inspecting http requests.
     $ cd server && npm start
     $ cd client && yarn start
 
-Make sure MongoDB is running on your server.
-
+Make sure [MongoDB](https://www.mongodb.com/) is running on your server.
