@@ -46,15 +46,16 @@ app.delete("/:id/:ts.json", (req, res) => {
   );
 });
 
-app.get("/appointments/create.json", (req, res) => {
+app.get("/appointments/create.json", async (req, res) => {
   var apt = new Appointment({
     createdAt: new Date()
   });
-  apt.save((err, apt) => res.json(err || apt));
+  await apt.save();
+  res.json(apt)
 });
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "/../client/build/index.html"));
 });
 
-server.listen(process.env.PORT || 3030, '0.0.0.0');
+server.listen(process.env.PORT || 3030);
