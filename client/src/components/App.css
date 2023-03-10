@@ -16,6 +16,21 @@ body,
   color: #222;
 }
 
+body {
+  -ms-overflow-style: none;
+  /** For IE */
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  scrollbar-width: none;
+}
+
 hr {
   border: none;
   height: 1px;
@@ -53,15 +68,16 @@ h1 {
   line-height: 1rem;
   z-index: 2;
   border-bottom: 1px solid #ebebeb;
- 
+
 }
+
 h1 a {
   text-decoration: none;
 }
 
 pre.bash {
   position: relative;
-  
+
 }
 
 pre.bash:before {
@@ -125,12 +141,14 @@ header {
 }
 
 @media all and (max-width: 30em) {
+
   .headers,
   .payload {
     float: none;
     width: 100%;
     padding: 0;
   }
+
   .meta abbr {
     margin-top: 0.5em;
     display: block;
@@ -213,13 +231,13 @@ header {
   text-decoration: none;
 }
 
-#proxy ~ .show-if-proxy,
-#proxy ~ .requests .show-if-proxy {
+#proxy~.show-if-proxy,
+#proxy~.requests .show-if-proxy {
   display: none;
 }
 
-#proxy:checked ~ .show-if-proxy,
-#proxy:checked ~ .requests .show-if-proxy {
+#proxy:checked~.show-if-proxy,
+#proxy:checked~.requests .show-if-proxy {
   display: block;
 }
 
