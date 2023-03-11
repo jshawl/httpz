@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
-import { API_URL } from "../../client/src/config";
+
 import json from "./HomeDemo.js";
-import ReactJson from "react-json-view";
 
 const createAppointment = callback => {
   fetch(`${API_URL}/appointments/create.json`)
@@ -27,14 +25,7 @@ export default function() {
         or maybe you want to save a webhook request and inspect the payload idk.
         Like this one:
       </p>
-      <ReactJson
-        src={json}
-        displayDataTypes={false}
-        displayObjectSize={false}
-        enableClipboard={false}
-        name={null}
-        iconStyle="triangle"
-      />
+      <pre>{JSON.stringify(json, null, 2)}</pre>
     </div>
   ) : (
     <Redirect to={"/" + appointment._id + "/new"} />

@@ -1,13 +1,11 @@
 import React from "react";
-import "./App.css";
 import Home from "./Home";
-import Appointment from "./Appointment";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+// import Appointment from "./Appointment";
+import Link from 'next/link'
 const App = () => (
-  <Router>
     <div className="App">
       <h1>
-        <Link to="/">
+        <Link href="/">
           http
           <span role="img" aria-label="z">
             ⚡
@@ -38,12 +36,8 @@ const App = () => (
           </svg>
         </a>
       </h1>
-      <Switch>
-        <Route path="/:id/:ts" component={Appointment} />
-        <Route path="/" component={Home} />
-      </Switch>
+      <Home />
     </div>
-  </Router>
 );
 
 export default App;

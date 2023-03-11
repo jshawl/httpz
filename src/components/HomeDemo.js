@@ -189,7 +189,5 @@ export default {
         site_admin: false
       }
     }
-  },
-  createdAt: "2020-03-21T20:36:10.822Z",
-  id: "5e767aa0e777e70017c010dc"
+  }
 };
