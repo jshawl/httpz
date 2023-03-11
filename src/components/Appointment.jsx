@@ -3,7 +3,7 @@ import io from "socket.io-client";
 import Requests from "./Requests";
 import Request from "./Request";
 import NewRequest from "./NewRequest";
-import { API_URL } from "../config";
+import { API_URL } from "../../client/src/config";
 
 class Appointment extends Component {
   constructor(props) {

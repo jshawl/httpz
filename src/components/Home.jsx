@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { API_URL } from "../config";
+import { API_URL } from "../../client/src/config";
 import json from "./HomeDemo.js";
 import ReactJson from "react-json-view";
 
