@@ -13,6 +13,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "highlight.js": "^11.7.0",
     "mongodb": "^5.1.0",
     "next": "13.2.4",
     "react": "18.2.0",

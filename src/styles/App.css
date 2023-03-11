@@ -74,14 +74,6 @@ h1 a {
   text-decoration: none;
 }
 
-pre.bash {
-  position: relative;
-}
-
-pre.bash:before {
-  content: "$ ";
-}
-
 .flex {
   height: 100%;
 }
@@ -139,6 +131,7 @@ header {
 }
 
 @media all and (max-width: 30em) {
+
   .headers,
   .payload {
     float: none;
@@ -228,13 +221,13 @@ header {
   text-decoration: none;
 }
 
-#proxy ~ .show-if-proxy,
-#proxy ~ .requests .show-if-proxy {
+#proxy~.show-if-proxy,
+#proxy~.requests .show-if-proxy {
   display: none;
 }
 
-#proxy:checked ~ .show-if-proxy,
-#proxy:checked ~ .requests .show-if-proxy {
+#proxy:checked~.show-if-proxy,
+#proxy:checked~.requests .show-if-proxy {
   display: block;
 }
 

@@ -46,13 +46,13 @@ app.delete("/:id/:ts.json", (req, res) => {
   );
 });
 
-app.get("/appointments/create.json", async (req, res) => {
-  var apt = new Appointment({
-    createdAt: new Date()
-  });
-  await apt.save();
-  res.json(apt);
-});
+// app.get("/appointments/create.json", async (req, res) => {
+//   var apt = new Appointment({
+//     createdAt: new Date()
+//   });
+//   await apt.save();
+//   res.json(apt);
+// });
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "/../client/build/index.html"));
