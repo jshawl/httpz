@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./Request.css";
 
 const parseJSON = stringOrObject => {
   let o;

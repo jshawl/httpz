@@ -5,17 +5,5 @@ body {
 
 pre {
   border: 1px solid #ccc;
-}
-
-.language-bash {
-  position: relative;
-  padding-left: 2rem !important;
-}
-
-.language-bash:before {
-  content: "$ ";
-  position: absolute;
-  top: 50%;
-  left: 1rem;
-  transform: translateY(-50%);
+  padding: 1rem;
 }

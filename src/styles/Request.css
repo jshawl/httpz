@@ -9,12 +9,6 @@
   margin: 0;
 }
 
-.Request .headers,
-.Request .payload,
-.Request pre {
-  white-space: normal;
-}
-
 .Request .response {
   border: 1px solid #ebebeb;
   display: inline-block;

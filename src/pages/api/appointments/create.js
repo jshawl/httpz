@@ -8,6 +8,5 @@ export default async function handler(req, res) {
     createdAt: new Date().toISOString(),
   });
   
-
   return res.status(200).json(apt);
 }

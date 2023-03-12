@@ -1,10 +1,8 @@
-import React from "react";
-import "./NewRequest.css";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import "react-tabs/style/react-tabs.css";
+import Code from "./Code";
 
-const script = uri =>
-  `fetch('${uri}',{
+const host = process.env.NODE_ENV === "production" ? "https://httpz.app" : "http://localhost:3000";
+
+const script = `fetch("${host}",{
   method: 'PUT',
   headers: {
     'Content-Type': 'application/json'
@@ -13,70 +11,41 @@ const script = uri =>
     ok: true,
     createdAt: new Date()
   })
-})`;
-
-const evaluate = (code, callback) => {
-  // eslint-disable-next-line
-  eval(code)
-    .then(res => res.json())
-    .then(callback);
-};
+})`
 
 const NewRequest = ({ appointmentURI }) => {
+  const url = `${host}/api${appointmentURI}`
   return (
     <div className="Request NewRequest">
-      <Tabs>
-        <TabList>
-          <Tab>JavaScript</Tab>
-          <Tab>curl</Tab>
-          <Tab>Webhooks</Tab>
-        </TabList>
-        <TabPanel>
-          <p>content-editable javascript:</p>
-          <script
-            id="script"
-            contentEditable="true"
-            type="text/demo"
-            style={{ display: "block" }}
-          >
-            {script(appointmentURI)}
-          </script>
-          <button
-            onClick={() =>
-              evaluate(document.getElementById("script").innerHTML, _ => _)
-            }
-          >
-            Run Snippet
-          </button>
-        </TabPanel>
-        <TabPanel>
+      <div>
+        <h2>WebHook URL:</h2>
+        <Code language="text" content={url} />
+        <hr />
+        <h2>Using cURL:</h2>
+        <br />
+        <div>
+          <h3>POST</h3>
           <p>query strings amirite</p>
-          <pre className="bash">
-            curl -X <strong>POST</strong> -d
-            "shop[name]=Supermarket&shop[products][]=fruit&shop[products][]=eggs"{" "}
-            {appointmentURI}
-          </pre>
+          <Code language="bash" content={`curl -X POST ${url} \\
+  -d "shop[name]=Supermarket&shop[products][]=fruit&shop[products][]=eggs"`} />
           <p>but also json</p>
-          <pre className="bash">
-            curl -X <strong>POST</strong> -d \ '{"{"}"json":"rocks"{"}"}' -H
-            'Content-Type: application/json' {appointmentURI}
-          </pre>
+          <Code language="bash" content={`curl -X POST \\
+  -H 'Content-Type: application/json' \\
+  ${url} \\
+  -d '{"json": "rocks"}'`} />
           <p>and the other http verbs too</p>
-          <pre className="bash wrap">
-            curl -X <strong>PATCH</strong> -d "this=is&so=cool" {appointmentURI}
-          </pre>
-          <pre className="bash wrap">
-            curl -X <strong>PUT</strong> -d "this=is&so=cool" {appointmentURI}
-          </pre>
-          <pre className="bash wrap">
-            curl -X <strong>DELETE</strong> {appointmentURI}
-          </pre>
-        </TabPanel>
-        <TabPanel>
-          <p>this is your webhook url:</p>
-          <pre className="wrap">{appointmentURI}</pre>
-        </TabPanel>
-      </Tabs>
+          <h3>PATCH</h3>
+          <Code language="bash" content={`curl -X PATCH \\
+  -d "this=is&so=cool" \\
+  ${url}`} />
+          <h3>PUT</h3>
+          <Code language="bash" content={`curl -X PUT \\
+  -d "this=is&so=cool" \\
+  ${url}`} />
+          <h3>DELETE</h3>
+          <Code language="bash" content={`curl -X DELETE ${url}`} />
+        </div>
+      </div>
     </div>
   );
 };
