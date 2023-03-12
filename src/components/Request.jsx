@@ -28,16 +28,10 @@ const request = ({ method, headers, payload }, url, callback) => {
 };
 
 const Request = ({ data, onDelete, appointmentURI }) => {
-  const [url, setUrl] =
-    useState();
-    // localStorage.getItem("httpz.proxy.url") || appointmentURI
+  const [url, setUrl] = useState();
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState();
-  useEffect(() => {
-    // localStorage.setItem("httpz.proxy.url", url);
-  }, [url]);
 
-  console.log(data?.payload);
   if (!data) return <div className="Request">Gone.</div>;
   return (
     <div className="Request">
@@ -68,7 +62,7 @@ const Request = ({ data, onDelete, appointmentURI }) => {
         >
           Resend{loading && "ing"} request to
         </button>
-        <div className={response && "response"}>
+        <div className={response ? "response" : ""}>
           {response && response.status ? (
             <div>
               {response.status} {response.statusText}
@@ -83,10 +77,6 @@ const Request = ({ data, onDelete, appointmentURI }) => {
           placeholder="http://localhost:3000/"
           type="text"
         />
-        <hr />
-        <button className="delete" onClick={() => onDelete(data, url)}>
-          Delete
-        </button>
       </div>
     </div>
   );

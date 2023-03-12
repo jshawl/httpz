@@ -9,10 +9,10 @@ const Requests = ({ data, active, ts, appointmentId }) => (
           data-key={datum.createdAt}
           key={datum.createdAt}
           className={
-            active &&
-            active.createdAt === datum.createdAt &&
-            ts !== "new" &&
-            "active"
+
+            active?.createdAt === datum.createdAt &&
+            ts !== "new" ?
+            "active" : ""
           }
         >
           <Link href={`/${appointmentId}/${datum.createdAt}`}>

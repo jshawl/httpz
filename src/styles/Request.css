@@ -5,7 +5,7 @@
 }
 
 .Request h2,
-.Request h2 > pre {
+.Request h2>pre {
   margin: 0;
 }
 
@@ -40,22 +40,4 @@
   display: block;
   border: 1px solid #bbb;
   width: 100%;
-}
-
-.Request .controls .delete {
-  color: #db2828;
-  display: inline-block;
-  border-radius: 3px;
-  border: 1px solid #db2828;
-}
-
-.Request .controls .delete:hover,
-.Request .controls .delete:active {
-  background: #db2828;
-  color: #fff;
-}
-
-.Request .controls .delete:focus {
-  outline: none;
-  box-shadow: 0 0 3px #db2828;
 }

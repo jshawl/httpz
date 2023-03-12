@@ -2,7 +2,7 @@ import hljs from "highlight.js";
 
 export default function ({ language, content }) {
   const highlighted = language
-    ? hljs.highlight(language, content)
+    ? hljs.highlight(content, {language})
     : hljs.highlightAuto(content);
 
   return (

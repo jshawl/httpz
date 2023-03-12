@@ -32,7 +32,7 @@ const NewRequest = ({ appointmentURI }) => {
           <Code
             language="bash"
             content={`curl -X POST ${url} \\
-  -d "shop[name]=Supermarket&shop[products][]=fruit&shop[products][]=eggs"`}
+  -d "key=value&other_key=other_value"`}
           />
           <p>but also json</p>
           <Code

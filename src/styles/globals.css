@@ -7,3 +7,21 @@ pre {
   border: 1px solid #ccc;
   padding: 1rem;
 }
+
+.delete {
+  color: #db2828;
+  display: inline-block;
+  border-radius: 3px;
+  border: 1px solid #db2828;
+}
+
+.delete:hover,
+.delete:active {
+  background: #db2828;
+  color: #fff;
+}
+
+.delete:focus {
+  outline: none;
+  box-shadow: 0 0 3px #db2828;
+}
