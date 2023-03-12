@@ -5,7 +5,7 @@
 }
 
 .Request h2,
-.Request h2>pre {
+.Request h2 > pre {
   margin: 0;
 }
 

@@ -1,15 +1,12 @@
 import mongodb, { ObjectId } from "@/lib/db.js";
 
 export default async function handler(req, res) {
-  const {method, headers, body} = req;
   const client = await mongodb;
   const db = client.db("httpz");
   const { appointment: id } = req.query;
-  if(req.method === "DELETE" && req.headers['x-httpz-internal']){
-    await db
-      .collection("appointments")
-      .deleteOne({ _id: new ObjectId(id) })
-      return res.status(204).send('')
+  if (req.method === "DELETE" && req.headers["x-httpz-internal"]) {
+    await db.collection("appointments").deleteOne({ _id: new ObjectId(id) });
+    return res.status(204).send("");
   }
   const request = {
     headers: req.headers,
