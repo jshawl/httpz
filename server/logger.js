@@ -6,7 +6,7 @@ var winstonPapertrail = new winston.transports.Syslog({
   host: process.env.SYSLOG_HOST,
   port: process.env.SYSLOG_PORT,
   localhost: "httpz.app",
-  app_name: "api"
+  app_name: "api",
 });
 
 module.exports = expressWinston.logger({
@@ -14,5 +14,5 @@ module.exports = expressWinston.logger({
   format: winston.format.combine(
     winston.format.colorize(),
     winston.format.json()
-  )
+  ),
 });

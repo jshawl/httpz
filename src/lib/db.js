@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 
-export { ObjectId } from "mongodb"
+export { ObjectId } from "mongodb";
 
 if (!process.env.MONGODB_URI) {
   throw new Error('Invalid environment variable: "MONGODB_URI"');

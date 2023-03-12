@@ -1,6 +1,9 @@
 import Code from "./Code";
 
-const host = process.env.NODE_ENV === "production" ? "https://httpz.app" : "http://localhost:3000";
+const host =
+  process.env.NODE_ENV === "production"
+    ? "https://httpz.app"
+    : "http://localhost:3000";
 
 const script = `fetch("${host}",{
   method: 'PUT',
@@ -11,10 +14,10 @@ const script = `fetch("${host}",{
     ok: true,
     createdAt: new Date()
   })
-})`
+})`;
 
 const NewRequest = ({ appointmentURI }) => {
-  const url = `${host}/api${appointmentURI}`
+  const url = `${host}/api${appointmentURI}`;
   return (
     <div className="Request NewRequest">
       <div>
@@ -26,22 +29,34 @@ const NewRequest = ({ appointmentURI }) => {
         <div>
           <h3>POST</h3>
           <p>query strings amirite</p>
-          <Code language="bash" content={`curl -X POST ${url} \\
-  -d "shop[name]=Supermarket&shop[products][]=fruit&shop[products][]=eggs"`} />
+          <Code
+            language="bash"
+            content={`curl -X POST ${url} \\
+  -d "shop[name]=Supermarket&shop[products][]=fruit&shop[products][]=eggs"`}
+          />
           <p>but also json</p>
-          <Code language="bash" content={`curl -X POST \\
+          <Code
+            language="bash"
+            content={`curl -X POST \\
   -H 'Content-Type: application/json' \\
   ${url} \\
-  -d '{"json": "rocks"}'`} />
+  -d '{"json": "rocks"}'`}
+          />
           <p>and the other http verbs too</p>
           <h3>PATCH</h3>
-          <Code language="bash" content={`curl -X PATCH \\
+          <Code
+            language="bash"
+            content={`curl -X PATCH \\
   -d "this=is&so=cool" \\
-  ${url}`} />
+  ${url}`}
+          />
           <h3>PUT</h3>
-          <Code language="bash" content={`curl -X PUT \\
+          <Code
+            language="bash"
+            content={`curl -X PUT \\
   -d "this=is&so=cool" \\
-  ${url}`} />
+  ${url}`}
+          />
           <h3>DELETE</h3>
           <Code language="bash" content={`curl -X DELETE ${url}`} />
         </div>

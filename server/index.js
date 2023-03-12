@@ -14,26 +14,26 @@ app.use(express.static(path.join(__dirname, "../client/build")));
 var server = require("http").Server(app);
 var io = require("socket.io")(server);
 
-io.sockets.on("connection", function(socket) {
+io.sockets.on("connection", function (socket) {
   const { id } = socket.handshake.query;
   if (!id) return;
   socket.join(id);
 });
 
-var handler = io => (req, res) => {
-  Appointment.receive(req.params.id, req, request => {
+var handler = (io) => (req, res) => {
+  Appointment.receive(req.params.id, req, (request) => {
     io.to(req.params.id).emit("proxy", request.payload);
     io.to(req.params.id).emit("request", request);
     res.send(request);
   });
 };
 
-["POST", "PUT", "PATCH", "DELETE"].map(method => {
+["POST", "PUT", "PATCH", "DELETE"].map((method) => {
   app[method.toLowerCase()]("/:id", handler(io));
 });
 
 app.get("/:id.json", (req, res) => {
-  Appointment.findOne({ _id: req.params.id }, function(err, apt) {
+  Appointment.findOne({ _id: req.params.id }, function (err, apt) {
     res.json(err || apt);
   });
 });

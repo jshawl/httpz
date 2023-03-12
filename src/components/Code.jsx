@@ -1,9 +1,6 @@
-import hljs from 'highlight.js';
+import hljs from "highlight.js";
 
-export default function ({
-  language,
-  content,
-}) {
+export default function ({ language, content }) {
   const highlighted = language
     ? hljs.highlight(language, content)
     : hljs.highlightAuto(content);

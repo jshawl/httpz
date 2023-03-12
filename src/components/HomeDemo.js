@@ -15,7 +15,7 @@ export default {
     "connect-time": "0",
     "x-request-start": "1584822970803",
     "total-route-time": "0",
-    "content-length": "9142"
+    "content-length": "9142",
   },
   method: "POST",
   payload: {
@@ -31,7 +31,7 @@ export default {
         config: {
           content_type: "form",
           insecure_ssl: "0",
-          url: "https://httpz.app/5e767aa0e777e70017c010dc"
+          url: "https://httpz.app/5e767aa0e777e70017c010dc",
         },
         updated_at: "2020-03-21T20:36:10Z",
         created_at: "2020-03-21T20:36:10Z",
@@ -40,7 +40,7 @@ export default {
           "https://api.github.com/repos/jshawl/httpz/hooks/193690843/test",
         ping_url:
           "https://api.github.com/repos/jshawl/httpz/hooks/193690843/pings",
-        last_response: { code: null, status: "unused", message: null }
+        last_response: { code: null, status: "unused", message: null },
       },
       repository: {
         id: 31315264,
@@ -70,7 +70,7 @@ export default {
           received_events_url:
             "https://api.github.com/users/jshawl/received_events",
           type: "User",
-          site_admin: false
+          site_admin: false,
         },
         html_url: "https://github.com/jshawl/httpz",
         description: "Inspect HTTP requests",
@@ -158,12 +158,12 @@ export default {
           name: "Other",
           spdx_id: "NOASSERTION",
           url: null,
-          node_id: "MDc6TGljZW5zZTA="
+          node_id: "MDc6TGljZW5zZTA=",
         },
         forks: 5,
         open_issues: 3,
         watchers: 19,
-        default_branch: "master"
+        default_branch: "master",
       },
       sender: {
         login: "jshawl",
@@ -186,8 +186,8 @@ export default {
         received_events_url:
           "https://api.github.com/users/jshawl/received_events",
         type: "User",
-        site_admin: false
-      }
-    }
-  }
+        site_admin: false,
+      },
+    },
+  },
 };
