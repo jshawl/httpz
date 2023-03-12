@@ -18,9 +18,9 @@ const Requests = ({ data, active, ts, appointmentId }) => (
               <Link href={`/${appointmentId}/${datum.createdAt}`}>
                 <pre>
                   {datum.method} /{datum.id}
+                  {datum.headers["user-agent"]}
                 </pre>
-                <pre className="soft">{datum.headers["user-agent"]}</pre>
-                <Timeago date={datum.createdAt} />
+                <time>{datum.createdAt}</time>
               </Link>
             </li>
         ))}

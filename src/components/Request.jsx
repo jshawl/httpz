@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import Code from "./Code";
+
 const parseJSON = stringOrObject => {
   let o;
   try {
@@ -27,13 +29,16 @@ const request = ({ method, headers, payload }, url, callback) => {
 
 const Request = ({ data, onDelete, appointmentURI }) => {
   const [url, setUrl] = useState(
-    localStorage.getItem("httpz.proxy.url") || appointmentURI
+    // localStorage.getItem("httpz.proxy.url") || appointmentURI
   );
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState();
   useEffect(() => {
-    localStorage.setItem("httpz.proxy.url", url);
+    // localStorage.setItem("httpz.proxy.url", url);
   }, [url]);
+
+
+  console.log(data?.payload)
   if (!data) return <div className="Request">Gone.</div>;
   return (
     <div className="Request">
@@ -45,24 +50,16 @@ const Request = ({ data, onDelete, appointmentURI }) => {
       <time>{data.createdAt}</time>
       <div className="payload">
         <h3>Request Body</h3>
-        <ReactJson
-          src={parseJSON(data.payload)}
-          displayDataTypes={false}
-          displayObjectSize={false}
-          enableClipboard={false}
-          name={null}
-          iconStyle="triangle"
+        <Code
+          content={JSON.stringify(data.payload, null, 2)}
+          language="json"
         />
       </div>
       <div className="headers">
         <h3>Request Headers</h3>
-        <ReactJson
-          src={data.headers}
-          displayDataTypes={false}
-          displayObjectSize={false}
-          enableClipboard={false}
-          name={null}
-          iconStyle="triangle"
+        <Code
+          content={JSON.stringify(data.headers, null, 2)}
+          language="json"
         />
       </div>
       <hr />
